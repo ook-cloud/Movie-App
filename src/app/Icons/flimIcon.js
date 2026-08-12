@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgComponent = (props) => (
+export const FlimIcon = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={18}
@@ -15,4 +15,3 @@ const SvgComponent = (props) => (
     />
   </svg>
 );
-export default SvgComponent;

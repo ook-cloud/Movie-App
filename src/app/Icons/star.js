@@ -1,5 +1,5 @@
 import * as React from "react";
-const SvgComponent = (props) => (
+export const Star = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={15}
@@ -16,4 +16,3 @@ const SvgComponent = (props) => (
     />
   </svg>
 );
-export default SvgComponent;

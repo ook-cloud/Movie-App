@@ -32,34 +32,6 @@ export default function MovieHome() {
       </header>
       <HeroSection />
         <main className="max-w-7xl mx-auto px-8 py-10 space-y-12">
-
-        </main>
-
-        <Footer className="bg-indigo-600 text-white mt-16 py-12 px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-          <div>
-            <div className="font-bold text-lg mb-2">Movie Z</div>
-            <p className="text-indigo-200 text-xs">© 2026 Movie Z. All Rights Reserved.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Contact Information</h4>
-            <p className="text-indigo-200 text-xs">Email: support@moviez.com</p>
-            <p className="text-indigo-200 text-xs">Phone: +976 11 123456</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-2">Follow us</h4>
-            <div className="flex gap-4 text-indigo-200 text-xs">
-              <a href="#" className="hover:text-white">Facebook</a>
-              <a href="#" className="hover:text-white">Instagram</a>
-              <a href="#" className="hover:text-white">Twitter</a>
-            </div>
-          </div>
-        </div>
-      </Footer>
-    </div>
-
-
-// Киноны сүлжээ хэсгийн компонент
 function MovieSection({ title, movies }) {
   return (
     <section>
@@ -78,26 +50,15 @@ function MovieSection({ title, movies }) {
       </div>
     </section>
   );
-}
+};
 
-// Нэг ширхэг киноны карт
-function MovieCard({ movie }) {
-  return (
-    <div className="bg-gray-50 p-2 rounded-xl border border-gray-100 hover:shadow-md transition cursor-pointer">
-      <div className="aspect-[2/3] rounded-lg overflow-hidden bg-gray-200 mb-2">
-        <img 
-          src={movie.image} 
-          alt={movie.title} 
-          className="w-full h-full object-cover hover:scale-105 transition duration-300" 
-        />
-      </div>
-      <div className="flex items-center gap-1 text-xs text-yellow-500 font-semibold mb-1">
-        <span>⭐</span>
-        <span className="text-gray-700">{movie.rating}</span>
-      </div>
-      <h3 className="text-sm font-semibold text-gray-800 truncate">{movie.title}</h3>
+
+
+
+        </main>
+
+        <Footer className="bg-indigo-600 text-white mt-16 py-12 px-8">
+
+      </Footer>
     </div>
-  );
-}
-  );
-}
+
