@@ -60,12 +60,6 @@ export default function MovieHome() {
 
       <HeroSection />
 
-      <main className="max-w-7xl mx-auto px-8 py-10 space-y-12">
-        <MovieSection title="Upcoming" movies={movies} />
-        <MovieSection title="Popular" movies={movies} />
-        <MovieSection title="Top Rated" movies={movies} />
-      </main>
-
       <Footer className="bg-indigo-600 text-white mt-16 py-12 px-8" />
     </div>
   );
