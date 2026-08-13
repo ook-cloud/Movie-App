@@ -4,39 +4,8 @@ import HeroSection from "./features/HeroSection";
 import MovieCard from "../components/MovieCart";
 import Footer from "./features/Footer";
 
-const api_token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI"
-
-export default function Main(){
-const [data, setdata] = useState([]);
-const [loading, setLoading] = useState ([true]);
-const [dark, setdark] = useState (false);
-const [errorMessage, setErrorMessage] useState("");
-
-const getData = async () => {
-  const response = await fetch(
-    "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
-    {headers: {Authorization: `Bearer ${api_token}`}},
-  );
-const jsonData = await response.json();
-
-return jsonData.results;
-};
-
-useEffect(() => {
-  getData()
-  .then((data) => setdata(data))
-  .catch(() => setErrorMessage("MOVIE API ERROR"))
-  .finally(()=> {
-    setLoading(false);
-  });
-}, []);
-// return (
-//   <div className="w-full min-h-screen flex flex-" ></div>
-// )
-
-}
-
-
+const api_token =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 // Туршилтын киноны дата
 const sampleMovies = [
@@ -78,6 +47,30 @@ const sampleMovies = [
 ];
 
 export default function Page() {
+  const [data, setdata] = useState([]);
+  const [loading, setLoading] = useState([true]);
+  const [dark, setdark] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const getData = async () => {
+    const response = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      { headers: { Authorization: `Bearer ${api_token}` } },
+    );
+    const jsonData = await response.json();
+
+    return jsonData.results;
+  };
+
+  useEffect(() => {
+    getData()
+      .then((data) => setdata(data))
+      .catch(() => setErrorMessage("MOVIE API ERROR"))
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans flex flex-col justify-between">
       <div>
@@ -137,6 +130,7 @@ export default function Page() {
               </a>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {Math.floor(movie.vote_average)}
               {sampleMovies.map((movie) => (
                 <MovieCard key={`top-${movie.id}`} {...movie} />
               ))}

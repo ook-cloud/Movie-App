@@ -4,7 +4,8 @@ export default function MovieCard({ title, rating, image }) {
   return (
     <div className="bg-gray-50 p-2 rounded-xl border border-gray-100 hover:shadow-md transition-shadow cursor-pointer group">
       {/* Poster Image */}
-      <div className="aspect-[2/3] rounded-lg overflow-hidden bg-gray-200 mb-2">
+      <div className="aspect-2/3 rounded-lg overflow-hidden bg-gray-200 mb-2">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={image}
           alt={title}

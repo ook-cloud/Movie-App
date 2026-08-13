@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HeroSection() {
   return (
-    <section className="relative h-[400px] md:h-[480px] bg-black text-white overflow-hidden">
+    <section className="relative h-100 md:h- bg-black text-white overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-60"
@@ -12,7 +12,7 @@ export default function HeroSection() {
       ></div>
 
       {/* Gradient Overlay (Текст тодруулагч сүүдэр) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent"></div>
+      <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/50 to-transparent"></div>
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto h-full flex flex-col justify-center px-6 md:px-12 z-10">
