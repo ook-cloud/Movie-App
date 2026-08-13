@@ -1,146 +1,49 @@
-import React from "react";
-import Header from "./features/Header";
-import HeroSection from "./features/HeroSection";
-import MovieCard from "../components/MovieCart";
-import Footer from "./features/Footer";
-
+"use client";
+import { useEffect, useState } from "react";
+import { Footer } from "../app/features/Footer";
+import { Header } from "../app/features/Header";
+import { HeroSection } from "../app/features/HeroSection";
+import { Popular } from "./features/Popular";
+import { TopRated } from "./features/TopRated";
+import { Upcoming } from "./features/Upcoming";
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
-
-// Туршилтын киноны дата
-const sampleMovies = [
-  {
-    id: 1,
-    title: "Dear Santa",
-    rating: "6.8",
-    image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "How To Train Your Dragon",
-    rating: "6.8",
-    image:
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Alien: Romulus",
-    rating: "6.8",
-    image:
-      "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    title: "From the Ashes",
-    rating: "6.8",
-    image:
-      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    id: 5,
-    title: "Space Dogg",
-    rating: "6.8",
-    image:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop",
-  },
-];
-
-export default function Page() {
-  const [data, setdata] = useState([]);
-  const [loading, setLoading] = useState([true]);
-  const [dark, setdark] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+export default function Main() {
+  const [dark, setDark] = useState(false);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [errorMessege, SetErrorMessege] = useState("");
   const getData = async () => {
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
       { headers: { Authorization: `Bearer ${api_token}` } },
     );
     const jsonData = await response.json();
-
     return jsonData.results;
   };
-
   useEffect(() => {
     getData()
-      .then((data) => setdata(data))
-      .catch(() => setErrorMessage("MOVIE API ERROR"))
+      .then((data) => setData(data))
+      .catch(() => SetErrorMessege("Movie api error"))
       .finally(() => {
         setLoading(false);
       });
   }, []);
-
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans flex flex-col justify-between">
-      <div>
-        {/* 1. Header */}
+    <div className="w-full min-h-screen flex flex-col items-center overflow-x-hidden">
+      <div className="w-full min-h-screen flex flex-col items-center overflow-x-hidden">
         <Header />
 
-        {/* 2. Hero Section */}
         <HeroSection />
 
-        {/* Main Content Areas */}
-        <main className="max-w-7xl mx-auto px-6 md:px-12 py-10 space-y-12">
-          {/* Upcoming Section */}
-          <section>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-900">Upcoming</h2>
-              <a
-                href="#"
-                className="text-xs font-semibold text-gray-500 hover:text-black"
-              >
-                See more &gt;
-              </a>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {sampleMovies.map((movie) => (
-                <MovieCard key={movie.id} {...movie} />
-              ))}
-            </div>
-          </section>
+        <div className="w-full max-w-7xl flex flex-col gap-13 mt-13 shrink-0">
+          <Upcoming />
+          <Popular />
+          <TopRated />
+        </div>
 
-          {/* Popular Section */}
-          <section>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-900">Popular</h2>
-              <a
-                href="#"
-                className="text-xs font-semibold text-gray-500 hover:text-black"
-              >
-                See more &gt;
-              </a>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {sampleMovies.map((movie) => (
-                <MovieCard key={`pop-${movie.id}`} {...movie} />
-              ))}
-            </div>
-          </section>
-
-          {/* Top Rated Section */}
-          <section>
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-900">Top Rated</h2>
-              <a
-                href="#"
-                className="text-xs font-semibold text-gray-500 hover:text-black"
-              >
-                See more &gt;
-              </a>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {Math.floor(movie.vote_average)}
-              {sampleMovies.map((movie) => (
-                <MovieCard key={`top-${movie.id}`} {...movie} />
-              ))}
-            </div>
-          </section>
-        </main>
+        <Footer />
       </div>
-
-      {/* 5. Footer */}
-      <Footer />
     </div>
   );
 }

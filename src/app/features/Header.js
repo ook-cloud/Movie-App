@@ -1,39 +1,42 @@
-import React from "react";
-
-export default function Header() {
+"use client";
+import { ArrowDown } from "../icons/ArrowDown";
+import { MoonIcon } from "../icons/MoonIcon";
+import { Movielogo } from "../icons/Movielogo";
+import { SearchIcon } from "../icons/SearchIcon";
+export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 px-4 md:px-8 py-3 flex items-center justify-between">
-      {/* Logo */}
-      <div className="flex items-center gap-2 cursor-pointer">
-        <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-black italic text-base">
-          Z
-        </div>
-        <span className="font-bold text-lg text-indigo-600 tracking-tight">
-          Movie Z
-        </span>
-      </div>
-
-      {/* Search Input */}
-      <div className="flex-1 max-w-md mx-4 md:mx-8">
-        <div className="relative">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400 text-sm">
-            🔍
+    <div className="w-full min-h-14.75 shrink-0 border-b border-zinc-200 bg-white px-6 lg:px-8 xl:px-12 flex justify-center items-center relative">
+      <div className="w-full max-w-7xl flex items-center justify-between gap-8">
+        <div className="flex items-center gap-2 shrink-0">
+          <Movielogo />
+          <span className="font-bold italic text-lg text-[#4338CA]">
+            Movie Z
           </span>
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full pl-9 pr-4 py-2 bg-gray-100 text-sm rounded-lg outline-none focus:ring-2 focus:ring-indigo-500/50 focus:bg-white transition-all text-gray-800 placeholder-gray-400"
-          />
+        </div>
+
+        <div className="flex items-center gap-3 flex-1 max-w-2xl">
+          <div className="h-9 flex items-center gap-2 px-3 rounded-md border border-zinc-200 bg-white shadow-sm shrink-0">
+            <ArrowDown />
+            <button className="text-sm font-medium text-[#18181B] border-none">
+              Genre
+            </button>
+          </div>
+
+          <div className="h-9 flex items-center gap-2.5 px-3 rounded-lg border border-zinc-200 bg-white shadow-sm flex-1 min-w-0">
+            <SearchIcon />
+
+            <input
+              type="text"
+              className="w-full min-w-0 text-sm text-[#18181B] bg-transparent outline-none placeholder:text-zinc-400"
+              placeholder="Search ..."
+            />
+          </div>
+        </div>
+
+        <div className="w-9 h-9 flex justify-center items-center border border-zinc-200 shadow-sm bg-white rounded-lg shrink-0">
+          <MoonIcon />
         </div>
       </div>
-
-      {/* Theme Toggle */}
-      <button
-        className="p-2 border border-gray-200 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
-        title="Toggle Theme"
-      >
-        ☀️
-      </button>
-    </header>
+    </div>
   );
-}
+};
