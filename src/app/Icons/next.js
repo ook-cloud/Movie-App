@@ -1,17 +1,20 @@
 import * as React from "react";
+
 export const Next = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={5}
-    height={9}
+    width={6}
+    height={10}
+    viewBox="0 0 6 10"
     fill="none"
     {...props}
   >
     <path
-      stroke="#09090B"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      d="m.5 8.5 4-4-4-4"
+      strokeWidth="1.5"
+      d="m.75 9.25 4-4.25-4-4.25"
     />
   </svg>
 );
