@@ -1,6 +1,6 @@
-import { Mail } from "../icons/Mail";
-import { FlimIcon } from "../icons/flimIcon";
-import { Phone } from "../icons/Phone";
+import { Mail } from "../Icons/mail";
+import { FlimIcon } from "../Icons/flimIcon";
+import { Phone } from "../Icons/phone";
 
 export const Footer = () => {
   return (

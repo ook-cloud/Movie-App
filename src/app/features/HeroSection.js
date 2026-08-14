@@ -1,9 +1,9 @@
 "use client";
 
-import { ChevronRight } from "../icons/ChevronRight";
-import { PlayIcon } from "../icons/PlayIcon";
-import { StarIcon } from "../icons/StarIcon";
-import { HeroSectionLoading } from "./HeroSectionLoading";
+import { Next } from "../Icons/next";
+import { Play } from "../Icons/Play";
+import { Star } from "../Icons/Star";
+// import { HeroSectionLoading } from "./HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 
 const API_TOKEN =
@@ -93,7 +93,7 @@ export const HeroSection = () => {
     scrollToIndex(currentIndex + 1);
   };
 
-  if (loading) return <HeroSectionLoading />;
+  //   if (loading) return <HeroSectionLoading />;
   if (errorMessage)
     return <div className="p-6 text-red-500">{errorMessage}</div>;
 
@@ -134,7 +134,7 @@ export const HeroSection = () => {
               </h2>
 
               <div className="flex items-center gap-2">
-                <StarIcon />
+                <Star />
                 <p className="font-semibold text-lg text-zinc-100">
                   {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
                   <span className="font-normal text-sm text-zinc-400">/10</span>
@@ -147,7 +147,7 @@ export const HeroSection = () => {
 
               <div className="pt-2">
                 <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-white text-zinc-900 font-medium text-sm hover:bg-zinc-200 transition-colors">
-                  <PlayIcon />
+                  <Play />
                   <span>Watch Trailer</span>
                 </button>
               </div>
@@ -174,7 +174,7 @@ export const HeroSection = () => {
         aria-label="Next Slide"
         className="absolute right-6 md:right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white hover:bg-zinc-100 text-zinc-900 shadow-lg flex items-center justify-center transition-all duration-200 active:scale-95"
       >
-        <ChevronRight className="w-4 h-4 shrink-0 text-zinc-900" />
+        <Next className="w-4 h-4 shrink-0 text-zinc-900" />
       </button>
     </div>
   );
