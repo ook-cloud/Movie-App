@@ -1,6 +1,6 @@
 "use client";
 import { Down } from "../Icons/Down";
-import { Moon } from "../Icons/moon";
+import { Moon } from "../Icons/Moon";
 import { FlimBlue } from "../Icons/FlimBlue";
 import { Search } from "../Icons/Search";
 export const Header = () => {

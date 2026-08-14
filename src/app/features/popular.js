@@ -1,10 +1,10 @@
 "use client";
-import { ArrowRight } from "../icons/ArrowRight";
-import { StarIcon2 } from "../icons/StarIcon2";
+import { NextArrow } from "../Icons/NextArrow";
+import { Star } from "../Icons/Star";
 import { useState, useEffect } from "react";
 import { PopularLoading } from "./PopularLoading";
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export const Popular = () => {
   const [data, setData] = useState([]);
@@ -30,7 +30,11 @@ export const Popular = () => {
   }, []);
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
-      {loading && <div><PopularLoading/></div>}
+      {loading && (
+        <div>
+          <PopularLoading />
+        </div>
+      )}
       {!loading && errorMessege && <div>{errorMessege}</div>}
       {!loading && !errorMessege && (
         <div className="w-full flex flex-col gap-8">
@@ -43,7 +47,7 @@ export const Popular = () => {
               <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
                 See more
               </p>
-              <ArrowRight />
+              <NextArrow />
             </div>
           </div>
 
@@ -64,7 +68,7 @@ export const Popular = () => {
                 </div>
                 <div className="w-full h-23.75 flex flex-col py-2 px-2">
                   <div className="w-full h-5.75 flex gap-1">
-                    <StarIcon2 />
+                    <Star />
                     <p className="w-full h-5.75 flex font-inter font-medium text-[14px] text-[#09090B] leading-5 items-center">
                       {object.vote_average
                         ? object.vote_average.toFixed(1)

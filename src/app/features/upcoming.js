@@ -1,8 +1,8 @@
 "use client";
-// import { UpcomingLoading } from "./UpcomingLoading";
+import { UpcomingLoading } from "./UpcomingLoading";
 import { Image } from "next/image";
 import { NextArrow } from "../Icons/NextArrow";
-import { Star } from "../icons/Star";
+import { Star } from "../Icons/Star";
 import { useState, useEffect } from "react";
 
 const api_token =
@@ -33,7 +33,7 @@ export const Upcoming = () => {
 
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
-      {/* {loading && <UpcomingLoading />} */}
+      {loading && <UpcomingLoading />}
       {!loading && errorMessege && <div>{errorMessege}</div>}
       {!loading && !errorMessege && (
         <div className="w-full flex flex-col gap-8">
