@@ -1,6 +1,6 @@
-import { EmailLogo } from "../icons/EmailLogo";
-import { MovielogoWhite } from "../icons/MovielogoWhite";
-import { PhoneLogo } from "../icons/PhoneLogo";
+import { Mail } from "../icons/Mail";
+import { FlimIcon } from "../icons/flimIcon";
+import { Phone } from "../icons/Phone";
 
 export const Footer = () => {
   return (
@@ -9,7 +9,7 @@ export const Footer = () => {
         <div className="w-61.75 min-h-50 flex flex-col justify-start shrink-0">
           <div className="w-full h-13 flex flex-col gap-3">
             <div className="w-23 h-5 flex gap-2 items-center">
-              <MovielogoWhite />
+              <FlimIcon />
 
               <p className="font-inter font-bold italic text-4 text-[#FAFAFA] w-16 h-5 flex items-center">
                 Movie Z
@@ -32,7 +32,7 @@ export const Footer = () => {
 
             <div className="w-full flex flex-col gap-6">
               <div className="w-full flex gap-3 items-start">
-                <EmailLogo />
+                <Mail />
 
                 <div className="flex flex-col">
                   <p className="h-5 font-inter font-medium text-[14px] leading-4 text-[#FAFAFA]">
@@ -46,7 +46,7 @@ export const Footer = () => {
               </div>
 
               <div className="w-full flex gap-3 items-start">
-                <PhoneLogo />
+                <Phone />
 
                 <div className="flex flex-col">
                   <p className="h-5 font-inter font-medium text-[14px] leading-4 text-[#FAFAFA]">

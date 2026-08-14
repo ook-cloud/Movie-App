@@ -7,14 +7,13 @@ import { HeroSectionLoading } from "./HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 
 const API_TOKEN =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export const HeroSection = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
-
 
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -28,7 +27,7 @@ export const HeroSection = () => {
       try {
         const response = await fetch(
           "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-          { headers: { Authorization: `Bearer ${API_TOKEN}` } }
+          { headers: { Authorization: `Bearer ${API_TOKEN}` } },
         );
 
         if (!response.ok) throw new Error("Failed to fetch");
@@ -80,7 +79,8 @@ export const HeroSection = () => {
   const scrollToIndex = (index) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const targetIndex = (index + displayedMovies.length) % displayedMovies.length;
+      const targetIndex =
+        (index + displayedMovies.length) % displayedMovies.length;
       container.scrollTo({
         left: targetIndex * container.clientWidth,
         behavior: "smooth",
@@ -94,7 +94,8 @@ export const HeroSection = () => {
   };
 
   if (loading) return <HeroSectionLoading />;
-  if (errorMessage) return <div className="p-6 text-red-500">{errorMessage}</div>;
+  if (errorMessage)
+    return <div className="p-6 text-red-500">{errorMessage}</div>;
 
   return (
     <div className="relative w-full group select-none">

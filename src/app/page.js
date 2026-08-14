@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Footer } from "../app/features/Footer";
-import { Header } from "../app/features/Header";
-import { HeroSection } from "../app/features/HeroSection";
+import { Footer } from "./features/Footer";
+import { Header } from "./features/Header";
+import { HeroSection } from "./features/HeroSection";
 import { Popular } from "./features/Popular";
 import { TopRated } from "./features/TopRated";
 import { Upcoming } from "./features/Upcoming";
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 export default function Main() {
   const [dark, setDark] = useState(false);
   const [data, setData] = useState([]);
