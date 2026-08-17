@@ -68,7 +68,7 @@ export const Popular = () => {
                 className="w-full h-110 flex flex-col rounded-lg gap-1 bg-[#F4F4F5] overflow-hidden"
               >
                 <div className="relative w-full h-85px">
-                  <image
+                  <img
                     alt={object.title || "Movie poster"}
                     src={
                       "https://image.tmdb.org/t/p/original" + object.poster_path

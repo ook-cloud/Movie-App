@@ -3,7 +3,7 @@ import { Down } from "../Icons/Down";
 import { Moon } from "../Icons/Moon";
 import { FlimBlue } from "../Icons/FlimBlue";
 import { Search } from "../Icons/Search";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 export const Header = () => {
   const router = useRouter();
   const navigateToHomePage = () => {
