@@ -3,11 +3,19 @@ import { Down } from "../Icons/Down";
 import { Moon } from "../Icons/Moon";
 import { FlimBlue } from "../Icons/FlimBlue";
 import { Search } from "../Icons/Search";
+import { useRouter } from "next/router";
 export const Header = () => {
+  const router = useRouter();
+  const navigateToHomePage = () => {
+    router.push("/");
+  };
   return (
     <div className="w-full min-h-14.75 shrink-0 border-b border-zinc-200 bg-white px-6 lg:px-8 xl:px-12 flex justify-center items-center relative">
       <div className="w-full max-w-7xl flex items-center justify-between gap-8">
-        <div className="flex items-center gap-2 shrink-0">
+        <div
+          className="flex items-center gap-2 shrink-0"
+          onClick={navigateToHomePage}
+        >
           <FlimBlue />
           <span className="font-bold italic text-lg text-[#4338CA]">
             Movie Z
