@@ -9,7 +9,7 @@ const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export const Popular = () => {
-  const router =  useRouter();
+  const router = useRouter();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessege, SetErrorMessege] = useState("");
@@ -49,11 +49,11 @@ export const Popular = () => {
               Popular
             </p>
 
-            <div className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF]"
-                style=({cursor: "pointer"})
-                onclick = {navigateToPopularPage}
+            <div
+              className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF]"
+              style={{ cursor: "pointer" }}
+              onClick={navigateToPopularPage}
             >
-          
               <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
                 See more
               </p>
@@ -68,7 +68,7 @@ export const Popular = () => {
                 className="w-full h-110 flex flex-col rounded-lg gap-1 bg-[#F4F4F5] overflow-hidden"
               >
                 <div className="relative w-full h-85px">
-                  <img
+                  <image
                     alt={object.title || "Movie poster"}
                     src={
                       "https://image.tmdb.org/t/p/original" + object.poster_path
