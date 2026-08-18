@@ -3,10 +3,13 @@ import { useState, useEffect } from "react";
 import { NextArrow } from "../Icons/NextArrow";
 import { Star } from "../Icons/Star";
 import { TopRatedLoading } from "./TopRatedLoading";
+import { useRouter } from "next/navigation";
+
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export const TopRated = () => {
+  const router = useRouter();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorMessege, SetErrorMessege] = useState("");
@@ -28,6 +31,9 @@ export const TopRated = () => {
         setLoading(false);
       });
   }, []);
+  const navigateToTopRatedPage = () => {
+    router.push("/top-rated");
+  };
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
       {loading && (
@@ -43,7 +49,11 @@ export const TopRated = () => {
               Top Rated
             </p>
 
-            <div className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF]">
+            <div
+              className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF]"
+              style={{ cursor: "pointer" }}
+              onClick={navigateToTopRatedPage}
+            >
               <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
                 See more
               </p>
