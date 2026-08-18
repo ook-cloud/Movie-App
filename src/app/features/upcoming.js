@@ -6,9 +6,9 @@ import { NextArrow } from "../Icons/NextArrow";
 import { StarIcon2 } from "../icons/StarIcon2";
 import { UpcomingLoading } from "../features/UpcomingLoading";
 import { useRouter } from "next/navigation";
-import { ChevronLeft } from "../Icons/";
-import { ChevronRight } from "../icons/ChevronRight";
-import { ThreeDots } from "../icons/ThreeDots";
+import { Previous } from "../Icons/Previous";
+import { Next } from "../Icons/Next";
+import { Dots } from "../Icons/Dots";
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
 
@@ -98,7 +98,7 @@ export default function UpcomingPage() {
         <div className="max-w-7xl h-10 flex justify-end ">
           <div className="h-10 flex">
             <button className="h-10 flex items-center justify-center border border-[#E4E4E7] border-solid rounded-md py-1 px-2">
-              <ChevronLeft />
+              <Previous />
               <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
                 Previous
               </p>
@@ -111,7 +111,7 @@ export default function UpcomingPage() {
                 2
               </button>
               <button className="w-10 h-10 rounded-md flex justify-center items-center">
-                <ThreeDots />
+                <Dots />
               </button>
               <button className="w-10 h-10 rounded-md flex items-center justify-center">
                 5
@@ -121,7 +121,7 @@ export default function UpcomingPage() {
               <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5 ">
                 Next
               </p>
-              <ChevronRight />
+              <Next />
             </button>
           </div>
         </div>
