@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Footer } from "../features/Footer";
 import { Header } from "../features/Header";
 import { NextArrow } from "../Icons/NextArrow";
-import { StarIcon2 } from "../icons/StarIcon2";
+import { Star2 } from "../Icons/Star2";
 import { UpcomingLoading } from "../features/UpcomingLoading";
 import { useRouter } from "next/navigation";
 import { Previous } from "../Icons/Previous";
@@ -74,7 +74,7 @@ export default function UpcomingPage() {
                   </div>
                   <div className="w-full h-23.75 flex flex-col py-2 px-2">
                     <div className="w-full h-5.75 flex gap-1">
-                      <StarIcon2 />
+                      <Star2 />
                       <p className="w-full h-5.75 flex font-inter font-medium text-[14px] text-[#09090B] leading-5 items-center">
                         {object.vote_average
                           ? object.vote_average.toFixed(1)
