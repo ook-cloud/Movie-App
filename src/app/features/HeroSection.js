@@ -3,7 +3,7 @@
 import { Next } from "../Icons/Next";
 import { Play } from "../Icons/Play";
 import { Star } from "../Icons/Star";
-// import { HeroSectionLoading } from "./HeroSectionLoading";
+import { HeroSectionLoading } from "./HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 
 const API_TOKEN =
@@ -93,7 +93,7 @@ export const HeroSection = () => {
     scrollToIndex(currentIndex + 1);
   };
 
-  //   if (loading) return <HeroSectionLoading />;
+  if (loading) return <HeroSectionLoading />;
   if (errorMessage)
     return <div className="p-6 text-red-500">{errorMessage}</div>;
 

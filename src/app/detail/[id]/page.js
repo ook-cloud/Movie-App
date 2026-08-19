@@ -3,7 +3,7 @@ import { Footer } from "@/app/features/Footer";
 import { Header } from "@/app/features/Header";
 import { Play } from "@/app/Icons/Play";
 import { Star } from "@/app/Icons/Star";
-import { StarIcon2 } from "@/app/Icons/Sun";
+import { Star2 } from "@/app/Icons/Star2";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { NextArrow } from "@/app/Icons/NextArrow";
@@ -321,7 +321,7 @@ export default function Detail() {
                 </div>
                 <div className="flex flex-col p-3 gap-1">
                   <div className="flex items-center gap-1">
-                    <StarIcon2 />
+                    <Star2 />
                     <p className="font-inter font-medium text-[13px] text-[#09090B]">
                       {movie.vote_average
                         ? movie.vote_average.toFixed(1)

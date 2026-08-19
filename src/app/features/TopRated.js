@@ -34,6 +34,9 @@ export const TopRated = () => {
   const navigateToTopRatedPage = () => {
     router.push("/top-rated");
   };
+    const JumpToDetail = (id) => {
+    router.push(`/detail/${id}`);
+  };
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
       {loading && (
