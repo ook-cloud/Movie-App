@@ -51,6 +51,17 @@ export const Upcoming = () => {
               <p className="font-inter font-semibold text-[24px] text-[#09090B] leading-8">
                 Upcoming
               </p>
+
+            </div>
+            <div
+              className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF]"
+              style={{ cursor: "pointer" }}
+              onClick={navigateToUpComingPage}
+            >
+              <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
+                See more
+              </p>
+              <NextArrow />
             </div>
 
             <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">

@@ -34,6 +34,9 @@ export const Popular = () => {
   const navigateToPopularPage = () => {
     router.push("/popular");
   };
+    const JumpToDetail = (id) => {
+    router.push(`/detail/${id}`);
+  };
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
       {loading && (
