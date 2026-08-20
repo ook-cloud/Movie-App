@@ -39,11 +39,7 @@ export const Popular = () => {
   };
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
-      {loading && (
-        <div>
-          <PopularLoading />
-        </div>
-      )}
+      {loading && <PopularLoading /> }
       {!loading && errorMessege && <div>{errorMessege}</div>}
       {!loading && !errorMessege && (
         <div className="w-full flex flex-col gap-8">
@@ -69,7 +65,8 @@ export const Popular = () => {
               <div
                 key={object.id}
                 className="w-full h-110 flex flex-col rounded-lg gap-1 bg-[#F4F4F5] overflow-hidden"
-              >
+              onClick={() => JumpToDetail(object.id)}
+             >
                 <div className="relative w-full h-85px">
                   <img
                     alt={object.title || "Movie poster"}

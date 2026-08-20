@@ -1,12 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { NextArrow } from "../Icons/NextArrow";
-import { Star2 } from "../Icons/Star2";
+import { Star} from "../Icons/Star";
 import { UpcomingLoading } from "../features/UpcomingLoading";
 import { useRouter } from "next/navigation";
-import { Previous } from "../Icons/Previous";
-import { Next } from "../Icons/Next";
-import { Dots } from "../Icons/Dots";
+
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
@@ -51,8 +49,6 @@ export const Upcoming = () => {
               <p className="font-inter font-semibold text-[24px] text-[#09090B] leading-8">
                 Upcoming
               </p>
-
-            </div>
             <div
               className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF]"
               style={{ cursor: "pointer" }}
@@ -63,6 +59,8 @@ export const Upcoming = () => {
               </p>
               <NextArrow />
             </div>
+            </div>
+           
 
             <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
               {data.slice(0, 10).map((object) => (
@@ -83,7 +81,7 @@ export const Upcoming = () => {
                   </div>
                   <div className="w-full h-23.75 flex flex-col py-2 px-2">
                     <div className="w-full h-5.75 flex gap-1">
-                      <Star2 />
+                      <Star />
                       <p className="w-full h-5.75 flex font-inter font-medium text-[14px] text-[#09090B] leading-5 items-center">
                         {object.vote_average
                           ? object.vote_average.toFixed(1)
@@ -105,41 +103,10 @@ export const Upcoming = () => {
           </div>
         )}
 
-        {/* Pagination Хэсэг */}
-        <div className="max-w-7xl h-10 flex justify-end">
-          <div className="h-10 flex gap-2">
-            <button className="h-10 flex items-center justify-center border border-[#E4E4E7] border-solid rounded-md py-1 px-2 cursor-pointer">
-              <Previous />
-              <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5 ml-1">
-                Previous
-              </p>
-            </button>
-            <div className="h-10 flex">
-              <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100">
-                1
-              </button>
-              <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100">
-                2
-              </button>
-              <button className="w-10 h-10 rounded-md flex justify-center items-center">
-                <Dots />
-              </button>
-              <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100">
-                5
-              </button>
-            </div>
-            <button className="h-10 flex items-center justify-center border-[#E4E4E7] border-solid border rounded-md py-1 px-2 cursor-pointer">
-              <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5 mr-1">
-                Next
-              </p>
-              <Next />
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
 // Next.js routing (App Router)-д зориулсан default export
-export default Upcoming;
+// export default Upcoming;
