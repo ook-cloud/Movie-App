@@ -39,8 +39,7 @@ export const Upcoming = () => {
     router.push(`/detail/${id}`);
   };
   return (
-    <div className="w-full flex flex-col items-center overflow-x-hidden">
-      <div className="max-w-7xl min-w-7xl flex flex-col px-4 md:px-8 gap-8 mt-13 mb-19">
+    <div className="w-full flex flex-col px-4 md:px-8 gap-8">
         {loading && <UpcomingLoading />}
         {!loading && errorMessege && <div>{errorMessege}</div>}
         {!loading && !errorMessege && (
@@ -104,7 +103,6 @@ export const Upcoming = () => {
         )}
 
       </div>
-    </div>
   );
 };
 

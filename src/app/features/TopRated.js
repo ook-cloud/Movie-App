@@ -39,11 +39,7 @@ export const TopRated = () => {
   };
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
-      {loading && (
-        <div>
-          <TopRatedLoading />
-        </div>
-      )}
+      {loading &&  <TopRatedLoading /> }
       {!loading && errorMessege && <div>{errorMessege}</div>}
       {!loading && !errorMessege && (
         <div className="w-full flex flex-col gap-8">
