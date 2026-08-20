@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { NextArrow } from "../Icons/NextArrow";
-import { Star} from "../Icons/Star";
+import { NextArrow } from "../icons/NextArrow";
+import { Star} from "../icons/Star";
 import { UpcomingLoading } from "../features/UpcomingLoading";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +12,7 @@ const api_token =
 export const Upcoming = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errorMessege, SetErrorMessege] = useState("");
+  const [errorMessage, SetErrorMessage] = useState("");
   const router = useRouter();
 
   const getData = async () => {
@@ -27,7 +27,7 @@ export const Upcoming = () => {
   useEffect(() => {
     getData()
       .then((data) => setData(data))
-      .catch(() => SetErrorMessege("Movie api error"))
+      .catch(() => SetErrorMessage("Movie api error"))
       .finally(() => {
         setLoading(false);
       });
@@ -41,8 +41,8 @@ export const Upcoming = () => {
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
         {loading && <UpcomingLoading />}
-        {!loading && errorMessege && <div>{errorMessege}</div>}
-        {!loading && !errorMessege && (
+        {!loading && errorMessage && <div>{errorMessage}</div>}
+        {!loading && !errorMessage && (
           <div className="w-full flex flex-col gap-8">
             <div className="w-full h-9 flex justify-between items-center">
               <p className="font-inter font-semibold text-[24px] text-[#09090B] leading-8">

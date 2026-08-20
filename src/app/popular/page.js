@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Popular } from "../features/Popular";
-import { Previous } from "../Icons/Previous";
-import { Next } from "../Icons/Next";
-import { Dots } from "../Icons/Dots";
+import { Previous } from "../icons/Previous";
+import { Next } from "../icons/Next";
+import { Dots } from "../icons/Dots";
 
 
 export default function PopularPage() {

@@ -1,12 +1,12 @@
 "use client";
 import { Footer } from "@/app/features/Footer";
 import { Header } from "@/app/features/Header";
-import { Play } from "@/app/Icons/Play";
-import { Star } from "@/app/Icons/Star";
-import { Star2 } from "@/app/Icons/Star2";
+import { Play } from "@/app/icons/Play";
+import { Star } from "@/app/icons/Star";
+import { Star2 } from "@/app/icons/Star2";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { NextArrow } from "@/app/Icons/NextArrow";
+import { NextArrow } from "@/app/icons/NextArrow";
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { Next } from "../Icons/Next";
-import { Play } from "../Icons/Play";
-import { Star } from "../Icons/Star";
+import { Next } from "../icons/Next";
+import { Play } from "../icons/Play";
+import { Star } from "../icons/Star";
 import { HeroSectionLoading } from "./HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 

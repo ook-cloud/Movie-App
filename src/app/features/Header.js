@@ -1,8 +1,8 @@
 "use client";
-import { Down } from "../Icons/Down";
-import { Moon } from "../Icons/Moon";
-import { FlimBlue } from "../Icons/FlimBlue";
-import { Search } from "../Icons/Search";
+import { Down } from "../icons/Down";
+import { Moon } from "../icons/Moon";
+import { FlimBlue } from "../icons/FlimBlue";
+import { Search } from "../icons/Search";
 import { useRouter } from "next/navigation";
 export const Header = () => {
   const router = useRouter();
