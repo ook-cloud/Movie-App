@@ -108,5 +108,3 @@ export const Upcoming = () => {
   );
 };
 
-// Next.js routing (App Router)-д зориулсан default export
-// export default Upcoming;
