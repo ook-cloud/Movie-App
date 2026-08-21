@@ -6,6 +6,7 @@ import { Search } from "../icons/Search";
 import { useRouter } from "next/navigation";
 export const Header = () => {
   const router = useRouter();
+  const [inputValue,setInputValue] = useState("") 
   const navigateToHomePage = () => {
     router.push("/");
   };
@@ -37,6 +38,8 @@ export const Header = () => {
               type="text"
               className="w-full min-w-0 text-sm text-[#18181B] bg-transparent outline-none placeholder:text-zinc-400"
               placeholder="Search ..."
+              onChange={(e)=> {setInputValue(e.target.value)}}
+              value={inputValue}
             />
           </div>
         </div>
