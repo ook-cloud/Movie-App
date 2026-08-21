@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import { NextArrow } from "../icons/NextArrow";
-import { Star} from "../icons/Star";
+import { NextArrow } from "../../icons/NextArrow";
+import { Star} from "../../icons/Star";
 import { UpcomingLoading } from "../features/UpcomingLoading";
 import { useRouter } from "next/navigation";
-
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";

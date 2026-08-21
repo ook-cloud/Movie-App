@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { TopRated } from "../features/TopRated";
+import { TopRated } from "../home/features/TopRated";
 import { Previous } from "../icons/Previous";
 import { Next } from "../icons/Next";
 import { Dots } from "../icons/Dots";

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Upcoming } from "../features/Upcoming";
+import { Upcoming } from "../home/features/Upcoming";
 import { Previous } from "../icons/Previous";
 import { Next } from "../icons/Next";
 import { Dots } from "../icons/Dots";

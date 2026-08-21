@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { NextArrow } from "../icons/NextArrow";
-import { Star } from "../icons/Star";
+import { NextArrow } from "../../icons/NextArrow";
+import { Star } from "../../icons/Star";
 import { TopRatedLoading } from "./TopRatedLoading";
 import { useRouter } from "next/navigation";
 

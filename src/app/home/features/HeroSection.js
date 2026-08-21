@@ -1,9 +1,9 @@
 "use client";
 
-import { Next } from "../icons/Next";
-import { Play } from "../icons/Play";
-import { Star } from "../icons/Star";
-import { HeroSectionLoading } from "./HeroSectionLoading";
+import { Next } from "../../icons/Next";
+import { Play } from "../../icons/Play";
+import { Star } from "../../icons/Star";
+import { HeroSectionLoading } from "../../features/HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 
 const API_TOKEN =
