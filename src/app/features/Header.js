@@ -6,10 +6,35 @@ import { Search } from "../icons/Search";
 import { useRouter } from "next/navigation";
 export const Header = () => {
   const router = useRouter();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, SetErrorMessage] = useState("");
+
+  const getData = async () => {
+    const response = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      { headers: { Authorization: `Bearer ${api_token}` } },
+    );
+    const jsonData = await response.json();
+    return jsonData.results;
+  };
+
+  useEffect(() => {
+    getData()
+      .then((data) => setData(data))
+      .catch(() => SetErrorMessage("Movie api error"))
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
   const [inputValue,setInputValue] = useState("") 
   const navigateToHomePage = () => {
     router.push("/");
   };
+
+// const getSearchData =
+
   return (
     <div className="w-full min-h-14.75 shrink-0 border-b border-zinc-200 bg-white px-6 lg:px-8 xl:px-12 flex justify-center items-center relative">
       <div className="w-full max-w-7xl flex items-center justify-between gap-8">

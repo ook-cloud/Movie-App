@@ -15,6 +15,7 @@ export default function PopularPage() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [errorMessage, SetErrorMessage] =useState("");
+    
   const getData = async () => {
     const response = await fetch(
       'https://api.themoviedb.org/3/movie/popular?language=en-US&page=${selectedPage}',
