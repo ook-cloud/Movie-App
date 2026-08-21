@@ -23,16 +23,19 @@ export default function PopularPage() {
                   </button>
                   <div className="h-10 flex">
                     <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100">
-                      1
+                      {selectedPage +1}
                     </button>
-                    <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100">
-                      2
+                    <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100"
+                     onClick={() => handleSecondButton(selectedPage + 1)}
+                     >
+                      {selectedPage +1}
                     </button>
                     <button className="w-10 h-10 rounded-md flex justify-center items-center">
                       <Dots />
                     </button>
-                    <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100">
-                      5
+                    <button className="w-10 h-10 rounded-md flex items-center justify-center hover:bg-zinc-100"
+                       onClick={() => handleSecondButton(selectedPage + 4)}>
+                      {selectedPage +1}
                     </button>
                   </div>
                   <button className="h-10 flex items-center justify-center border-[#E4E4E7] border-solid border rounded-md py-1 px-2 cursor-pointer">
