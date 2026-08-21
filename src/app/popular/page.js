@@ -12,6 +12,9 @@ const api_token =
 
 export default function PopularPage() {
     const [selectedPage, setSelectedPage] = useState(1);
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [errorMessage, SetErrorMessage] =useState("");
   const getData = async () => {
     const response = await fetch(
       'https://api.themoviedb.org/3/movie/popular?language=en-US&page=${selectedPage}',
@@ -28,7 +31,7 @@ export default function PopularPage() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [selectedPage]);
 
     const handlePreviousButton = () => {
         const page = selectedPage === 1 ? 1 : selectedPage - 1;
