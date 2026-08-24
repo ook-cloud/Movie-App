@@ -3,7 +3,7 @@
 import { Next } from "../../icons/Next";
 import { Play } from "../../icons/Play";
 import { Star } from "../../icons/Star";
-import { HeroSectionLoading } from "../../features/HeroSectionLoading";
+import { HeroSectionLoading } from "../../home/features/HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 
 const API_TOKEN =
