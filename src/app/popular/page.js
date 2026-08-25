@@ -1,16 +1,14 @@
 "use client";
-// zaswar
-
 
 import { useState, useEffect } from "react";
-import { StarIcon2 } from "../icons/StarIcon2";
-import { PopularLoading } from "../features/PopularLoading";
+import { Star } from "../icons/Star";
+import { PopularLoading } from "../home/features/PopularLoading";
 import { Header } from "../features/Header";
 import { Footer } from "../features/Footer";
 import { useRouter } from "next/navigation";
-import { ChevronLeft } from "../icons/ChevronLeft";
-import { ChevronRight } from "../icons/ChevronRight";
-import { ThreeDots } from "../icons/ThreeDots";
+import { Previous } from "../icons/Previous";
+import { Next } from "../icons/Next";
+import { Dots } from "../icons/Dots";
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
@@ -94,7 +92,7 @@ export default function PopularPage() {
                     </div>
                     <div className="flex flex-col p-2.5 sm:p-3 gap-1 flex-1 justify-between">
                       <div className="flex items-center gap-1">
-                        <StarIcon2 />
+                        <Star />
                         <p className="font-inter font-medium text-xs sm:text-sm text-[#09090B]">
                           {object.vote_average
                             ? object.vote_average.toFixed(1)
@@ -123,7 +121,7 @@ export default function PopularPage() {
                     : "cursor-pointer hover:bg-zinc-100"
                 }`}
               >
-                <ChevronLeft />
+                <Previous />
                 <span className="font-inter font-medium text-[#09090B]">
                   Previous
                 </span>
@@ -145,7 +143,7 @@ export default function PopularPage() {
 
                 {page + 2 < totalPages && (
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                    <ThreeDots />
+                    <Dots />
                   </div>
                 )}
 
@@ -171,7 +169,7 @@ export default function PopularPage() {
                 <span className="font-inter font-medium text-[#09090B]">
                   Next
                 </span>
-                <ChevronRight />
+                <Next />
               </button>
             </div>
           </div>
