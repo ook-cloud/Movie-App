@@ -11,7 +11,7 @@ import { Next } from "../icons/Next";
 import { Dots } from "../icons/Dots";
 
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export default function PopularPage() {
   const [data, setData] = useState([]);
@@ -46,11 +46,11 @@ export default function PopularPage() {
     router.push(`/detail/${id}`);
   };
 
-  const handleNext = () => {
+  const handleNextButton = () => {
     if (page < totalPages) setPage((prev) => prev + 1);
   };
 
-  const handlePrev = () => {
+  const handlePrevButton = () => {
     if (page > 1) setPage((prev) => prev - 1);
   };
 
@@ -113,7 +113,7 @@ export default function PopularPage() {
           <div className="w-full flex justify-end mt-4">
             <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
               <button
-                onClick={handlePrev}
+                onClick={handlePrevButton}
                 disabled={page === 1}
                 className={`h-9 sm:h-10 flex items-center justify-center gap-1 border border-[#E4E4E7] rounded-md py-1 px-2.5 sm:px-3 text-xs sm:text-sm ${
                   page === 1
@@ -158,7 +158,7 @@ export default function PopularPage() {
               </div>
 
               <button
-                onClick={handleNext}
+                onClick={handleNextButton}
                 disabled={page === totalPages}
                 className={`h-9 sm:h-10 flex items-center justify-center gap-1 border border-[#E4E4E7] rounded-md py-1 px-2.5 sm:px-3 text-xs sm:text-sm ${
                   page === totalPages
