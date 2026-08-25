@@ -1,18 +1,18 @@
 "use client";
 // zaswar
 
-import { ArrowDown } from "../icons/ArrowDown";
-import { MoonIcon } from "../icons/MoonIcon";
-import { Movielogo } from "../icons/Movielogo";
-import { SearchIcon } from "../icons/SearchIcon";
+import { Down } from "../icons/Down";
+import { Moon } from "../icons/Moon";
+import { FlimBlue } from "../icons/FlimBlue";
+import { Search } from "../icons/Search";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { ChevronRight } from "../icons/ChevronRight";
-import { StarIcon2 } from "../icons/StarIcon2";
-import { ArrowRight } from "../icons/ArrowRight";
+import { Next } from "../icons/Next";
+import { Star } from "../icons/Star";
+import { NextArrow } from "../icons/NextArrow";
 
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export const Header = () => {
   const [data, setData] = useState([]);
@@ -113,7 +113,7 @@ export const Header = () => {
           className="flex items-center gap-2 shrink-0 cursor-pointer"
           onClick={JumpToHome}
         >
-          <Movielogo />
+          <FlimBlue />
           <span className="font-bold italic text-base sm:text-lg text-[#4338CA]">
             Movie Z
           </span>
@@ -125,7 +125,7 @@ export const Header = () => {
               onClick={() => setGenre((prev) => !prev)}
               className="h-9 flex items-center gap-1.5 sm:gap-2 px-3 rounded-md border border-zinc-200 bg-white shadow-xs hover:bg-zinc-50 cursor-pointer text-xs sm:text-sm font-medium text-[#18181B] shrink-0 whitespace-nowrap"
             >
-              <ArrowDown />
+              <Down />
               Genre
             </button>
 
@@ -152,7 +152,7 @@ export const Header = () => {
                       <p className="font-inter font-semibold text-[#09090B] text-xs">
                         {obj.name}
                       </p>
-                      <ChevronRight />
+                      <Next />
                     </div>
                   ))}
                 </div>
@@ -165,14 +165,14 @@ export const Header = () => {
             aria-label="Open search"
             className="md:hidden w-9 h-9 flex items-center justify-center rounded-md border border-zinc-200 bg-white shadow-xs hover:bg-zinc-50 cursor-pointer shrink-0"
           >
-            <SearchIcon />
+            <Search />
           </button>
 
           <div
             className="hidden md:flex h-9 items-center gap-2.5 px-3 rounded-lg border border-zinc-200 bg-white shadow-xs flex-1 min-w-[220px] relative"
             ref={searchRef}
           >
-            <SearchIcon />
+            <Search />
             <input
               type="text"
               value={event}
@@ -208,7 +208,7 @@ export const Header = () => {
                             {obj.title}
                           </p>
                           <div className="flex items-center gap-1.5 mt-0.5">
-                            <StarIcon2 />
+                            <Star />
                             <p className="font-semibold text-xs sm:text-sm text-[#09090B]">
                               {obj.vote_average
                                 ? obj.vote_average.toFixed(1)
@@ -222,7 +222,7 @@ export const Header = () => {
                         <div className="flex justify-between items-center text-xs text-zinc-500 mt-1">
                           <span>{obj.release_date?.slice(0, 4) || "N/A"}</span>
                           <span className="flex items-center gap-1 font-medium text-indigo-600 hover:underline">
-                            See more <ArrowRight />
+                            See more <NextArrow />
                           </span>
                         </div>
                       </div>
@@ -248,7 +248,7 @@ export const Header = () => {
         </div>
 
         <div className="w-9 h-9 flex justify-center items-center border border-zinc-200 shadow-xs bg-white rounded-lg shrink-0 cursor-pointer hover:bg-zinc-50">
-          <MoonIcon />
+          <Moon />
         </div>
       </div>
 
@@ -258,7 +258,7 @@ export const Header = () => {
           className="md:hidden absolute inset-x-0 top-16 bg-white border-b border-zinc-200 p-3 shadow-md flex flex-col gap-2 z-50"
         >
           <div className="flex items-center gap-2 h-10 px-3 rounded-lg border border-zinc-200 bg-zinc-50">
-            <SearchIcon />
+            <Search />
             <input
               type="text"
               value={event}
@@ -295,7 +295,7 @@ export const Header = () => {
                         {obj.title}
                       </p>
                       <div className="flex items-center gap-1.5 mt-0.5">
-                        <StarIcon2 />
+                        <Star />
                         <p className="font-semibold text-xs text-[#09090B]">
                           {obj.vote_average
                             ? obj.vote_average.toFixed(1)
