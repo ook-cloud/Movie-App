@@ -13,7 +13,7 @@ const api_token =
 export const Header = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errorMessege, SetErrorMessege] = useState("");
+  const [errorMessage, SetErrorMessage] = useState("");
   const router = useRouter();
 
   const getData = async () => {
@@ -28,7 +28,7 @@ export const Header = () => {
   useEffect(() => {
     getData()
       .then((data) => setData(data))
-      .catch(() => SetErrorMessege("Movie api error"))
+      .catch(() => SetErrorMessage("Movie api error"))
       .finally(() => {
         setLoading(false);
       });

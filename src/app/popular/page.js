@@ -16,7 +16,7 @@ const api_token =
 export default function PopularPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errorMessege, SetErrorMessege] = useState("");
+  const [errorMessage, SetErrorMessage] = useState("");
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -36,7 +36,7 @@ export default function PopularPage() {
         setData(jsonData.results || []);
         setTotalPages(Math.min(jsonData.total_pages || 1, 500));
       })
-      .catch(() => SetErrorMessege("Movie api error"))
+      .catch(() => SetErrorMessage("Movie api error"))
       .finally(() => {
         setLoading(false);
       });
@@ -60,10 +60,10 @@ export default function PopularPage() {
       <main className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto flex flex-col flex-1">
         <div className="w-full flex flex-col gap-6 sm:gap-8 mt-6 sm:mt-10 mb-16">
           {loading && <PopularLoading />}
-          {!loading && errorMessege && (
-            <div className="p-8 text-center text-red-500">{errorMessege}</div>
+          {!loading && errorMessage && (
+            <div className="p-8 text-center text-red-500">{errorMessage}</div>
           )}
-          {!loading && !errorMessege && (
+          {!loading && !errorMessage && (
             <div className="w-full flex flex-col gap-6 sm:gap-8">
               <div className="w-full flex justify-between items-center">
                 <h1 className="font-inter font-semibold text-xl sm:text-2xl text-[#09090B] leading-8">

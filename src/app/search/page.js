@@ -19,7 +19,7 @@ export default function SearchDetails() {
   const [data, setData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errorMessege, SetErrorMessege] = useState("");
+  const [errorMessage, SetErrorMessage] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
@@ -51,7 +51,7 @@ export default function SearchDetails() {
   useEffect(() => {
     getData()
       .then((data) => setData(data))
-      .catch(() => SetErrorMessege("Movie api error"));
+      .catch(() => SetErrorMessage("Movie api error"));
   }, []);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function SearchDetails() {
         setTotalPages(Math.min(jsonData.total_pages || 1, 500));
         setTotalResults(jsonData.total_results || 0);
       })
-      .catch(() => SetErrorMessege("Movie api error"))
+      .catch(() => SetErrorMessage("Movie api error"))
       .finally(() => {
         setLoading(false);
       });
@@ -101,10 +101,10 @@ export default function SearchDetails() {
       <Header />
       <div className="w-full max-w-7xl flex flex-col px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8 mt-6 sm:mt-10 mb-16 flex-1">
         {loading && <SearchLoading />}
-        {!loading && errorMessege && (
-          <div className="p-8 text-center text-red-500">{errorMessege}</div>
+        {!loading && errorMessage && (
+          <div className="p-8 text-center text-red-500">{errorMessage}</div>
         )}
-        {!loading && !errorMessege && (
+        {!loading && !errorMessage && (
           <div className="w-full flex flex-col gap-6 sm:gap-8">
             <h1 className="w-full font-inter font-semibold text-2xl sm:text-3xl text-[#09090B]">
               Search results
