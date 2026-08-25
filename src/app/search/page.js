@@ -1,21 +1,20 @@
 "use client";
 // zaswar
 
-
 import { useEffect, useState } from "react";
 import { Footer } from "@/app/features/Footer";
 import { Header } from "@/app/features/Header";
-import { StarIcon2 } from "@/app/icons/StarIcon2";
+import { Star } from "@/app/icons/Star";
 
 import { useParams, useRouter } from "next/navigation";
-import { ChevronLeft } from "@/app/icons/ChevronLeft";
-import { ChevronRight } from "@/app/icons/ChevronRight";
-import { ThreeDots } from "@/app/icons/ThreeDots";
+import { Previous } from "@/app/icons/Previous";
+import { Next } from "@/app/icons/Next";
+import { Dots } from "@/app/icons/Dots";
 import { XIcon } from "@/app/icons/XIcon";
-import { SearchDetailsSkeleton } from "./SearchDetailsSkeleton";
+import { SearchLoading } from "./SearchLoading";
 
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export default function SearchDetails() {
   const [data, setData] = useState([]);
@@ -102,7 +101,7 @@ export default function SearchDetails() {
     <div className="w-full flex flex-col items-center overflow-x-hidden min-h-screen">
       <Header />
       <div className="w-full max-w-7xl flex flex-col px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8 mt-6 sm:mt-10 mb-16 flex-1">
-        {loading && <SearchDetailsSkeleton />}
+        {loading && <SearchLoading />}
         {!loading && errorMessege && (
           <div className="p-8 text-center text-red-500">{errorMessege}</div>
         )}
@@ -139,7 +138,7 @@ export default function SearchDetails() {
                       </div>
                       <div className="w-full p-2.5 sm:p-3 flex flex-col gap-1 justify-between flex-1">
                         <div className="flex items-center gap-1">
-                          <StarIcon2 />
+                          <Star />
                           <p className="font-inter font-medium text-xs sm:text-sm text-[#09090B]">
                             {object.vote_average
                               ? object.vote_average.toFixed(1)
@@ -166,7 +165,7 @@ export default function SearchDetails() {
                           : "cursor-pointer hover:bg-zinc-100"
                       }`}
                     >
-                      <ChevronLeft />
+                      <Previous />
                       <span className="font-inter font-medium text-[#09090B]">
                         Previous
                       </span>
@@ -186,7 +185,7 @@ export default function SearchDetails() {
                       )}
                       {page + 2 < totalPages && (
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                          <ThreeDots />
+                          <Dots />
                         </div>
                       )}
                       {page < totalPages && (
@@ -211,7 +210,7 @@ export default function SearchDetails() {
                       <span className="font-inter font-medium text-[#09090B]">
                         Next
                       </span>
-                      <ChevronRight />
+                      <Next />
                     </button>
                   </div>
                 </div>
@@ -247,7 +246,7 @@ export default function SearchDetails() {
                         <p className="font-inter font-semibold leading-4">
                           {obj.name}
                         </p>
-                        {isSelected ? <XIcon /> : <ChevronRight />}
+                        {isSelected ? <XIcon /> : <Next />}
                       </div>
                     );
                   })}
