@@ -40,11 +40,11 @@ const jsonData = await response.json();
 return jsonData;
 };
 
-// useEffect(() => {
-// getData()
-// .then((data) => setData(data))
-// .catch(() => SetErrorMessage("Movie api error"));
-// }, []);
+useEffect(() => {
+getData()
+.then((data) => setData(data))
+.catch(() => SetErrorMessage("Movie api error"));
+}, []);
 
 useEffect(() => {
 setLoading(true);

@@ -181,9 +181,9 @@
 
 "use client";
 
-import { ChevronRight } from "../icons/ChevronRight";
-import { PlayIcon } from "../icons/PlayIcon";
-import { StarIcon } from "../icons/StarIcon";
+import { Next } from "../../icons/Next";
+import { Play } from "../../icons/Play";
+import { Star } from "../../icons/Star";
 import { HeroSectionLoading } from "./HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
@@ -338,7 +338,7 @@ export const HeroSection = () => {
               </h2>
 
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <StarIcon />
+                <Star />
                 <p className="font-semibold text-sm sm:text-base md:text-lg text-zinc-100">
                   {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}
                   <span className="font-normal text-xs sm:text-sm text-zinc-400">
@@ -353,7 +353,7 @@ export const HeroSection = () => {
 
               <div className="pt-1 sm:pt-2">
                 <button className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-md bg-white text-zinc-900 font-medium text-xs sm:text-sm hover:bg-zinc-200 transition-colors">
-                  <PlayIcon />
+                  <Play />
                   <span>Watch Trailer</span>
                 </button>
               </div>
@@ -382,7 +382,7 @@ export const HeroSection = () => {
         aria-label="Next Slide"
         className="hidden sm:flex absolute right-6 md:right-10 top-1/2 -translate-y-1/2 z-30 w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/90 hover:bg-white text-zinc-900 shadow-lg items-center justify-center transition-all duration-200 active:scale-95 cursor-pointer"
       >
-        <ChevronRight className="w-4 h-4 shrink-0 text-zinc-900" />
+        <Next className="w-4 h-4 shrink-0 text-zinc-900" />
       </button>
     </div>
   );
