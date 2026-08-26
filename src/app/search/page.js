@@ -29,72 +29,66 @@ export default function SearchDetails() {
   const param = useParams();
   const searchQuery = param?.id ? decodeURIComponent(param.id) : "";
 
-  const getData = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?language=en`,
-      { headers: { Authorization: `Bearer ${api_token}` } },
-    );
-    const jsonData = await response.json();
-    return jsonData.genres || [];
-  };
+const getTempData = async () => {
+if (!searchQuery) return { results: [], total_pages: 1, total_results: 0 };
+const response = await fetch(
+`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`,
+{ headers: { Authorization: `Bearer ${api_token}` } },
+);
 
-  const getTempData = async () => {
-    if (!searchQuery) return { results: [], total_pages: 1, total_results: 0 };
-    const response = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`,
-      { headers: { Authorization: `Bearer ${api_token}` } },
-    );
-    const jsonData = await response.json();
-    return jsonData;
-  };
+const jsonData = await response.json();
+return jsonData;
+};
 
-  useEffect(() => {
-    getData()
-      .then((data) => setData(data))
-      .catch(() => SetErrorMessage("Movie api error"));
-  }, []);
+// useEffect(() => {
+// getData()
+// .then((data) => setData(data))
+// .catch(() => SetErrorMessage("Movie api error"));
+// }, []);
 
-  useEffect(() => {
-    setLoading(true);
-    getTempData()
-      .then((jsonData) => {
-        setTempData(jsonData.results || []);
-        setTotalPages(Math.min(jsonData.total_pages || 1, 500));
-        setTotalResults(jsonData.total_results || 0);
-      })
-      .catch(() => SetErrorMessage("Movie api error"))
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [searchQuery, page]);
+useEffect(() => {
+setLoading(true);
+getTempData()
+.then((jsonData) => {
+setTempData(jsonData.results || []);
+setTotalPages(Math.min(jsonData.total_pages || 1, 500));
+setTotalResults(jsonData.total_results || 0);
+})
 
-  const JumpToDetail = (id) => {
-    router.push(`/detail/${id}`);
-  };
+.catch(() => SetErrorMessage("Movie api error"))
+.finally(() => {
+setLoading(false);
+});
+}, [searchQuery, page]);
 
-  const handleNext = () => {
-    if (page < totalPages) setPage((prev) => prev + 1);
-  };
+const JumpToDetail = (id) => {
+router.push(`/detail/${id}`);
+};
 
-  const handlePrev = () => {
-    if (page > 1) setPage((prev) => prev - 1);
-  };
+const handleNext = () => {
+if (page < totalPages) setPage((prev) => prev + 1);
+};
 
-  const handleGenreClick = (genreId) => {
-    const idNum = Number(genreId);
-    if (selectedGenreIds.includes(idNum)) {
-      setSelectedGenreIds(selectedGenreIds.filter((id) => id !== idNum));
-    } else {
-      setSelectedGenreIds([...selectedGenreIds, idNum]);
-    }
-  };
+const handlePrev = () => {
+if (page > 1) setPage((prev) => prev - 1);
+};
 
-  const filteredMovies =
-    selectedGenreIds.length > 0
-      ? tempData.filter((movie) =>
-          movie.genre_ids?.some((id) => selectedGenreIds.includes(id)),
-        )
-      : tempData;
+const handleGenreClick = (genreId) => {
+const idNum = Number(genreId);
+if (selectedGenreIds.includes(idNum)) {
+setSelectedGenreIds(selectedGenreIds.filter((id) => id !== idNum));
+} else {
+
+setSelectedGenreIds([...selectedGenreIds, idNum]);
+}
+};
+
+const filteredMovies =
+selectedGenreIds.length > 0
+? tempData.filter((movie) =>
+movie.genre_ids?.some((id) => selectedGenreIds.includes(id)),
+)
+: tempData;
 
   return (
     <div className="w-full flex flex-col items-center overflow-x-hidden min-h-screen">
