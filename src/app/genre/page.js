@@ -1,11 +1,11 @@
 "use client";
-import { ArrowDown } from "../icons/ArrowDown";
-import { MoonIcon } from "../icons/MoonIcon";
-import { Movielogo } from "../icons/Movielogo";
-import { SearchIcon } from "../icons/SearchIcon";
+import { Down } from "../icons/Down";
+import { Moon } from "../icons/Moon";
+import { FlimBlue } from "../icons/FlimBlue";
+import { Searchn } from "../icons/Search";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { ChevronRight } from "../icons/ChevronRight";
+import { Next } from "../icons/Next";
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
