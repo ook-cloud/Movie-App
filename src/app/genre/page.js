@@ -2,7 +2,7 @@
 import { Down } from "../icons/Down";
 import { Moon } from "../icons/Moon";
 import { FlimBlue } from "../icons/FlimBlue";
-import { Searchn } from "../icons/Search";
+import { Search } from "../icons/Search";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Next } from "../icons/Next";
@@ -55,7 +55,7 @@ export const Header = () => {
           className="flex items-center gap-2 shrink-0 cursor-pointer"
           onClick={JumpToHome}
         >
-          <Movielogo />
+          <FlimBlue />
           <span className="font-bold italic text-lg text-[#4338CA]">
             Movie Z
           </span>
@@ -66,7 +66,7 @@ export const Header = () => {
               onClick={genre ? HandleGenreDrop : HandleGenreClose}
               className="h-9 flex items-center gap-2 px-3 rounded-md border border-zinc-200 bg-white shadow-sm hover:bg-zinc-50 cursor-pointer text-sm font-medium text-[#18181B]"
             >
-              <ArrowDown />
+              <Down />
               Genre
             </button>
 
@@ -92,7 +92,7 @@ export const Header = () => {
                       <p className="font-inter font-semibold text-[#09090B] text-[12px] leading-4">
                         {obj.name}
                       </p>
-                      <ChevronRight />
+                      <Next />
                     </div>
                   ))}
                 </div>
@@ -101,7 +101,7 @@ export const Header = () => {
           </div>
 
           <div className="h-9 flex items-center gap-2.5 px-3 rounded-lg border border-zinc-200 bg-white shadow-sm flex-1 min-w-0">
-            <SearchIcon />
+            <Search />
             <input
               type="text"
               className="w-full min-w-0 text-sm text-[#18181B] bg-transparent outline-none placeholder:text-zinc-400"
@@ -111,7 +111,7 @@ export const Header = () => {
         </div>
 
         <div className="w-9 h-9 flex justify-center items-center border border-zinc-200 shadow-sm bg-white rounded-lg shrink-0 cursor-pointer">
-          <MoonIcon />
+          <Moon />
         </div>
       </div>
     </div>
