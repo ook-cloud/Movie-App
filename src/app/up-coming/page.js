@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Star } from "../icons/Star";
-import { UpcomingLoading } from "../home/features/UpcomingLoading";
+import { UpcomingLoading } from "../home/components/UpcomingLoading";
 import { Header } from "../features/Header";
 import { Footer } from "../features/Footer";
 import { useRouter } from "next/navigation";

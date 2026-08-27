@@ -2,7 +2,7 @@
 import { NextArrow } from "../../icons/NextArrow";
 import { Star } from "../../icons/Star";
 import { useState, useEffect } from "react";
-import { PopularLoading } from "./PopularLoading";
+import { PopularLoading } from "../components/PopularLoading";
 import { useRouter } from "next/navigation";
 
 const api_token =
@@ -34,12 +34,12 @@ export const Popular = (props) => {
   const navigateToPopularPage = () => {
     router.push("/popular");
   };
-    const JumpToDetail = (id) => {
+  const JumpToDetail = (id) => {
     router.push(`/detail/${id}`);
   };
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
-      {loading && <PopularLoading /> }
+      {loading && <PopularLoading />}
       {!loading && errorMessage && <div>{errorMessage}</div>}
       {!loading && !errorMessage && (
         <div className="w-full flex flex-col gap-8">
@@ -65,8 +65,8 @@ export const Popular = (props) => {
               <div
                 key={object.id}
                 className="w-full h-110 flex flex-col rounded-lg gap-1 bg-[#F4F4F5] overflow-hidden"
-              onClick={() => JumpToDetail(object.id)}
-             >
+                onClick={() => JumpToDetail(object.id)}
+              >
                 <div className="relative w-full h-85px">
                   <img
                     alt={object.title || "Movie poster"}

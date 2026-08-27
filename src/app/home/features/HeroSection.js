@@ -3,7 +3,7 @@
 import { Next } from "../../icons/Next";
 import { Play } from "../../icons/Play";
 import { Star } from "../../icons/Star";
-import { HeroSectionLoading } from "./HeroSectionLoading";
+import { HeroSectionLoading } from "../components/HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 

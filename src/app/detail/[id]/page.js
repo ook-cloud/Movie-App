@@ -1,4 +1,5 @@
 "use client";
+
 import { Footer } from "@/app/features/Footer";
 import { Header } from "@/app/features/Header";
 import { Play } from "@/app/icons/Play";
