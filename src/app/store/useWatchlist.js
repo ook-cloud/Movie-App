@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export const UseWatchlist = create(
+export const useWatchlist = create(
   persist(
     (set, get) => ({
       items: [],

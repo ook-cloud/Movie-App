@@ -3,17 +3,17 @@
 import { useRouter } from "next/navigation";
 import { Header } from "../features/Header"; // Замаа шалгаарай
 import { Footer } from "../features/Footer";
-import { UseWatchlist } from "./features/UseWatchlist";
+import { useWatchlist } from "../store/useWatchlist";
 
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-export default function UseWatchlistPage() {
+export default function useWatchlistPage() {
   const router = useRouter();
 
   // Zustand Store-оос хэрэгтэй өгөгдөл болон үйлдэл (action)-үүдээ дуудаж авах
-  const items = UseWatchlist((state) => state.items);
-  const toggle = UseWatchlist((state) => state.toggle);
-  const clear = UseWatchlist((state) => state.clear);
+  const items = useWatchlist((state) => state.items);
+  const toggle = useWatchlist((state) => state.toggle);
+  const clear = useWatchlist((state) => state.clear);
 
   const handleMovieClick = (id) => {
     router.push(`/detail/${id}`);

@@ -11,7 +11,7 @@ import {
 } from "next/navigation";
 
 import { GenreLoading } from "../../home/components/GenreLoading";
-import { UseWatchlist } from "@/app/watchlist/features/UseWatchlist";
+import { UseWatchlist } from "@/app/store/useWatchlist";
 
 const api_token = process.env.NEXT_PUBLIC_TMDB_TOKEN;
 
