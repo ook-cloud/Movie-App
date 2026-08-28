@@ -1,13 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Header } from "../features/Header";
-import { Footer } from "../features/Footer";
+import { Header } from "@/features/Header";
+import { Footer } from "@/features/Footer";
 import { useWatchlist } from "@/app/store/useWatchlist";
 
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-export default function useWatchlistPage() {
+export default function WatchlistPage() {
   const router = useRouter();
 
   // Zustand Store-оос хэрэгтэй өгөгдөл болон үйлдэл (action)-үүдээ дуудаж авах
