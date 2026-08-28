@@ -11,6 +11,7 @@ import {
 } from "next/navigation";
 
 import { GenreLoading } from "../../home/components/GenreLoading";
+import { useWatchlist } from "@/context/WatchlistContext";
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
@@ -20,7 +21,7 @@ export default function GenresMainPage() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const param = useParams();
-
+  const { items, toggle } = useWatchlist();
   const urlGenres = searchParams.get("genres");
   const initialGenres = urlGenres
     ? urlGenres.split(",").map(Number)
