@@ -11,17 +11,18 @@ import {
 } from "next/navigation";
 
 import { GenreLoading } from "../../home/components/GenreLoading";
-import { useWatchlist } from "@/context/WatchlistContext";
+import { UseWatchlist } from "@/app/watchlist/features/UseWatchlist";
 
-const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
+const api_token = process.env.NEXT_PUBLIC_TMDB_TOKEN;
 
 export default function GenresMainPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const param = useParams();
-  const { items, toggle } = useWatchlist();
+
+  const { items = [], toggle } = UseWatchlist();
+
   const urlGenres = searchParams.get("genres");
   const initialGenres = urlGenres
     ? urlGenres.split(",").map(Number)
@@ -37,6 +38,21 @@ export default function GenresMainPage() {
   const [totalPages, setTotalPages] = useState(0);
 
   const [loading, setLoading] = useState(true);
+
+  // Зүрхэн дээр дарахад Watchlist руу нэмэх/хасах
+  const onHeartClick = (event, movie) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (toggle) {
+      toggle({
+        id: movie.id,
+        title: movie.title,
+        poster_path: movie.poster_path,
+        vote_average: movie.vote_average,
+      });
+    }
+  };
 
   useEffect(() => {
     fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", {
@@ -204,37 +220,62 @@ export default function GenresMainPage() {
             <GenreLoading count={20} />
           ) : (
             <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4">
-              {movies.map((movie) => (
-                <div
-                  key={movie.id}
-                  className="flex flex-col cursor-pointer group relative"
-                  onClick={() => handleMovieClick(movie.id)}
-                >
-                  <div className="relative w-full aspect-[2/3] overflow-hidden rounded-xl mb-3 bg-gray-100 dark:bg-gray-800">
-                    <img
-                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                      alt={movie.title}
-                      src={
-                        movie.poster_path
-                          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                          : "https://via.placeholder.com/500x750?text=No+Image"
-                      }
-                    />
+              {movies.map((movie) => {
+                const saved = items.some((item) => item.id === movie.id);
+                return (
+                  <div
+                    key={movie.id}
+                    className="flex flex-col cursor-pointer group relative"
+                    onClick={() => handleMovieClick(movie.id)}
+                  >
+                    <div className="relative w-full aspect-[2/3] overflow-hidden rounded-xl mb-3 bg-gray-100 dark:bg-gray-800">
+                      <img
+                        className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                        alt={movie.title}
+                        src={
+                          movie.poster_path
+                            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                            : "https://via.placeholder.com/500x750?text=No+Image"
+                        }
+                      />
+
+                      {/* Зүрхэн товчлуур */}
+                      <button
+                        onClick={(e) => onHeartClick(e, movie)}
+                        className="absolute top-2 right-2 z-10 w-[28px] h-[28px] rounded-full flex items-center justify-center transition hover:scale-110 border border-white/20 shadow-md"
+                        style={{
+                          backgroundColor: saved
+                            ? "#F43F5E"
+                            : "rgba(10, 10, 12, 0.62)",
+                        }}
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill={saved ? "white" : "none"}
+                          stroke="white"
+                          strokeWidth="2"
+                        >
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                      </button>
+                    </div>
+                    <div className="flex items-center gap-1 mt-1 text-sm font-medium">
+                      <span className="text-yellow-400">★</span>
+                      <span className="text-gray-900 dark:text-white">
+                        {movie.vote_average?.toFixed(1) || "N/A"}
+                      </span>
+                      <span className="text-gray-500 dark:text-gray-400">
+                        /10
+                      </span>
+                    </div>
+                    <h3 className="mt-1 text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-2">
+                      {movie.title}
+                    </h3>
                   </div>
-                  <div className="flex items-center gap-1 mt-1 text-sm font-medium">
-                    <span className="text-yellow-400">★</span>
-                    <span className="text-gray-900 dark:text-white">
-                      {movie.vote_average?.toFixed(1) || "N/A"}
-                    </span>
-                    <span className="text-gray-500 dark:text-gray-400">
-                      /10
-                    </span>
-                  </div>
-                  <h3 className="mt-1 text-base font-semibold leading-tight text-gray-900 dark:text-white line-clamp-2">
-                    {movie.title}
-                  </h3>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
 
