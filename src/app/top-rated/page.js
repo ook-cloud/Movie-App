@@ -149,12 +149,12 @@ export default function TopRatedPage() {
                   </div>
                 )}
 
-                {page < totalPages && (
+                {page + 4 < totalPages && (
                   <button
-                    onClick={() => setPage(totalPages)}
+                    onClick={() => setPage(page + 4)}
                     className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex items-center justify-center hover:bg-zinc-100 text-xs sm:text-sm cursor-pointer"
                   >
-                    {totalPages}
+                    {page + 4}
                   </button>
                 )}
               </div>
