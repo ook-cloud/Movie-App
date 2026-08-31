@@ -31,28 +31,32 @@ export const Upcoming = () => {
         setLoading(false);
       });
   }, []);
+
   const navigateToUpComingPage = () => {
     router.push("/up-coming");
   };
+
   const JumpToDetail = (id) => {
     router.push(`/detail/${id}`);
   };
+
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
       {loading && <UpcomingLoading />}
-      {!loading && errorMessage && <div>{errorMessage}</div>}
+      {!loading && errorMessage && (
+        <div className="text-red-500 font-medium">{errorMessage}</div>
+      )}
       {!loading && !errorMessage && (
         <div className="w-full flex flex-col gap-8">
           <div className="w-full h-9 flex justify-between items-center">
-            <p className="font-inter font-semibold text-[24px] text-[#09090B] leading-8">
+            <p className="font-inter font-semibold text-[24px] text-[#09090B] dark:text-zinc-100 leading-8">
               Upcoming
             </p>
             <div
-              className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF]"
-              style={{ cursor: "pointer" }}
+              className="w-40 h-9 rounded-md flex justify-center items-center gap-2 bg-[#FFFFFF] dark:bg-zinc-900 border border-transparent dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
               onClick={navigateToUpComingPage}
             >
-              <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
+              <p className="font-inter font-medium text-[14px] text-[#09090B] dark:text-zinc-100 leading-5">
                 See more
               </p>
               <NextArrow />
@@ -63,10 +67,10 @@ export const Upcoming = () => {
             {data.slice(0, 10).map((object) => (
               <div
                 key={object.id}
-                className="w-full h-110 flex flex-col rounded-lg gap-1 bg-[#F4F4F5] overflow-hidden cursor-pointer"
+                className="w-full h-110 flex flex-col rounded-lg gap-1 bg-[#F4F4F5] dark:bg-zinc-900 border border-transparent dark:border-zinc-800 overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
                 onClick={() => JumpToDetail(object.id)}
               >
-                <div className="relative w-full h-85px">
+                <div className="relative w-full h-85px bg-zinc-200 dark:bg-zinc-800">
                   <img
                     alt={object.title || "Movie poster"}
                     src={
@@ -76,19 +80,19 @@ export const Upcoming = () => {
                   />
                 </div>
                 <div className="w-full h-23.75 flex flex-col py-2 px-2">
-                  <div className="w-full h-5.75 flex gap-1">
+                  <div className="w-full h-5.75 flex gap-1 items-center">
                     <Star />
-                    <p className="w-full h-5.75 flex font-inter font-medium text-[14px] text-[#09090B] leading-5 items-center">
+                    <p className="w-full h-5.75 flex font-inter font-medium text-[14px] text-[#09090B] dark:text-zinc-100 leading-5 items-center">
                       {object.vote_average
                         ? object.vote_average.toFixed(1)
                         : "N/A"}
-                      <span className="font-inter font-normal text-[14px] text-[#71717A]">
+                      <span className="font-inter font-normal text-[14px] text-[#71717A] dark:text-zinc-400">
                         /10
                       </span>
                     </p>
                   </div>
                   <div className="w-full h-14 flex gap-2.5">
-                    <p className="font-inter font-normal text-[18px] text-[#09090B] leading-7 line-clamp-2">
+                    <p className="font-inter font-normal text-[18px] text-[#09090B] dark:text-zinc-100 leading-7 line-clamp-2">
                       {object.title}
                     </p>
                   </div>
