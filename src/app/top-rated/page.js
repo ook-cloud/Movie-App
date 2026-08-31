@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Star } from "../icons/Star";
-import { TopRatedLoading } from "../home/components/TopRatedLoading";
+import { TopRatedLoading } from "@/app/home/components/TopRatedLoading";
 import { Header } from "../features/Header";
 import { Footer } from "../features/Footer";
 import { useRouter } from "next/navigation";
@@ -23,7 +23,7 @@ export default function TopRatedPage() {
 
   const getData = async () => {
     const response = await fetch(
-      `https://api.themoviedb.org/3/movie/toprated?language=en-US&page=${page}`,
+      `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`,
       { headers: { Authorization: `Bearer ${api_token}` } },
     );
     const jsonData = await response.json();
@@ -53,6 +53,8 @@ export default function TopRatedPage() {
   const handlePrevButton = () => {
     if (page > 1) setPage((prev) => prev - 1);
   };
+
+  console.log(data);
 
   return (
     <div className="w-full flex flex-col items-center min-h-screen overflow-x-hidden">

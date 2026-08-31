@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { Star } from "../icons/Star";
 import { UpcomingLoading } from "../home/components/UpcomingLoading";
-import { Header } from "../features/Header";
-import { Footer } from "../features/Footer";
+import { Header } from "@/app/features/Header";
+import { Footer } from "@/app/features/Footer";
 import { useRouter } from "next/navigation";
 import { Previous } from "../icons/Previous";
 import { Next } from "../icons/Next";
@@ -67,7 +67,7 @@ export default function UpcomingPage() {
             <div className="w-full flex flex-col gap-6 sm:gap-8">
               <div className="w-full flex justify-between items-center">
                 <h1 className="font-inter font-semibold text-xl sm:text-2xl text-[#09090B] leading-8">
-                  Popular
+                  Upcoming
                 </h1>
               </div>
 
@@ -147,12 +147,12 @@ export default function UpcomingPage() {
                   </div>
                 )}
 
-                {page < totalPages && (
+                {page + 4 < totalPages && (
                   <button
-                    onClick={() => setPage(totalPages)}
+                    onClick={() => setPage(page + 4)}
                     className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex items-center justify-center hover:bg-zinc-100 text-xs sm:text-sm cursor-pointer"
                   >
-                    {totalPages}
+                    {page + 4}
                   </button>
                 )}
               </div>
