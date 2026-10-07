@@ -8,7 +8,7 @@ import { Star } from "../icons/Star";
 import { useParams, useRouter } from "next/navigation";
 import { Previous } from "../icons/Previous";
 import { Next } from "../icons/Next";
-import { Dots } from "../icons/Dots";
+import { Dots } from "../icons/dots";
 import { XIcon } from "../icons/XIcon";
 import { SearchLoading } from "../home/components/SearchLoading";
 
