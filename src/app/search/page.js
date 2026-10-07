@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Footer } from "@/app/features/Footer";
-import { Header } from "@/app/features/Header";
-import { Star } from "@/app/icons/Star";
+import { Footer } from "../features/Footer";
+import { Header } from "../features/Header";
+import { Star } from "../icons/Star";
 
 import { useParams, useRouter } from "next/navigation";
-import { Previous } from "@/app/icons/Previous";
-import { Next } from "@/app/icons/Next";
-import { Dots } from "@/app/icons/Dots";
-import { XIcon } from "@/app/icons/XIcon";
+import { Previous } from "../icons/Previous";
+import { Next } from "../icons/Next";
+import { Dots } from "../icons/Dots";
+import { XIcon } from "../icons/XIcon";
 import { SearchLoading } from "../home/components/SearchLoading";
 
 const api_token =
