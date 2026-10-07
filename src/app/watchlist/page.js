@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Header } from "@/features/Header";
-import { Footer } from "@/features/Footer";
+import { Header } from "../features/Header";
+import { Footer } from "../features/Footer";
 import { useWatchlist } from "@/app/store/useWatchlist";
 
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w500";

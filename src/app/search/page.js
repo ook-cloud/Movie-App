@@ -10,7 +10,7 @@ import { Previous } from "@/app/icons/Previous";
 import { Next } from "@/app/icons/Next";
 import { Dots } from "@/app/icons/Dots";
 import { XIcon } from "@/app/icons/XIcon";
-import { SearchLoading } from "./SearchLoading";
+import { SearchLoading } from "../home/components/SearchLoading";
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
