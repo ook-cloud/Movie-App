@@ -1,11 +1,12 @@
 "use client";
 
 import { Next } from "../../icons/Next";
-import { Play } from "../../icons//Play";
+
 import { Star } from "../../icons/Star";
 import { HeroSectionLoading } from "../components/HeroSectionLoading";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { Play } from "@/app/icons/Play";
 
 const API_TOKEN =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";

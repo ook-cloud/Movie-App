@@ -1,5 +1,5 @@
-import { Mail } from "../icons/Mail";
-import { FlimIcon } from "../icons/FlimIcon";
+import { Mail } from "../icons/mail";
+import { FlimIcon } from "../icons/flimIcon";
 import { Phone } from "../icons/Phone";
 
 export const Footer = () => {
