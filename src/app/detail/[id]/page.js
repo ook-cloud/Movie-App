@@ -2,12 +2,11 @@
 
 import { Footer } from "../../features/Footer";
 import { Header } from "../../features/Header";
-import { Play } from "../../icons/Play";
-import { Star } from "../../icons/Star";
-import { Star2 } from "../../icons/Star2";
+import { Play, Star, ArrowRight } from "lucide-react";
+
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { NextArrow } from "../../icons/NextArrow";
+
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
@@ -298,7 +297,7 @@ export default function Detail() {
               >
                 See more
               </button>
-              <NextArrow />
+              <ArrowRight />
             </div>
           </div>
 
@@ -322,7 +321,7 @@ export default function Detail() {
                 </div>
                 <div className="flex flex-col p-3 gap-1">
                   <div className="flex items-center gap-1">
-                    <Star2 />
+                    <Star />
                     <p className="font-inter font-medium text-[13px] text-[#09090B]">
                       {movie.vote_average
                         ? movie.vote_average.toFixed(1)
