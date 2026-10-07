@@ -1,14 +1,12 @@
 "use client";
 
+import { Star, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Star } from "../icons/Star";
 import { PopularLoading } from "../home/components/PopularLoading";
 import { Header } from "../features/Header";
 import { Footer } from "../features/Footer";
 import { useRouter } from "next/navigation";
 import { Previous } from "../icons/Previous";
-import { Next } from "../icons/Next";
-import { Dots } from "../icons/dots";
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
@@ -143,7 +141,7 @@ export default function PopularPage() {
 
                 {page + 2 < totalPages && (
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                    <Dots />
+                    <... />
                   </div>
                 )}
 
@@ -169,7 +167,7 @@ export default function PopularPage() {
                 <span className="font-inter font-medium text-[#09090B]">
                   Next
                 </span>
-                <Next />
+                <ArrowRight />
               </button>
             </div>
           </div>

@@ -1,17 +1,20 @@
 "use client";
-import { Sun, Moon } from "lucide-react";
+import {
+  Sun,
+  Moon,
+  Film,
+  Search,
+  ChevronRight,
+  Star,
+  ArrowRight,
+  Down,
+} from "lucide-react";
 
-import { FlimBlue } from "../icons/flimBlue";
-import { Search } from "../icons/Search";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { Next } from "../icons/Next";
-import { Star } from "../icons/Star";
-import { NextArrow } from "../icons/NextArrow";
 import { Button } from "@base-ui/react";
 // import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
-import { Down } from "../icons/down";
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
@@ -121,7 +124,7 @@ export const Header = () => {
           className="flex items-center gap-2 shrink-0 cursor-pointer"
           onClick={JumpToHome}
         >
-          <FlimBlue />
+          <Film />
           <span className="font-bold italic text-base sm:text-lg text-[#4338CA] dark:text-indigo-400">
             Movie Z
           </span>
@@ -162,7 +165,7 @@ export const Header = () => {
                       <p className="font-inter font-semibold text-[#09090B] dark:text-zinc-100 text-xs">
                         {obj.name}
                       </p>
-                      <Next />
+                      <ChevronRight />
                     </div>
                   ))}
                 </div>
@@ -235,7 +238,7 @@ export const Header = () => {
                         <div className="flex justify-between items-center text-xs text-zinc-500 dark:text-zinc-400 mt-1">
                           <span>{obj.release_date?.slice(0, 4) || "N/A"}</span>
                           <span className="flex items-center gap-1 font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
-                            See more <NextArrow />
+                            See more <ArrowRight />
                           </span>
                         </div>
                       </div>

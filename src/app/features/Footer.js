@@ -1,6 +1,4 @@
-import { Mail } from "../icons/mail";
-import { FlimIcon } from "../icons/flimIcon";
-import { Phone } from "../icons/Phone";
+import { Mail, Phone, Film } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -9,7 +7,7 @@ export const Footer = () => {
         <div className="w-61.75 min-h-50 flex flex-col justify-start shrink-0">
           <div className="w-full h-13 flex flex-col gap-3">
             <div className="w-23 h-5 flex gap-2 items-center">
-              <FlimIcon />
+              <Film />
 
               <p className="font-inter font-bold italic text-4 text-[#FAFAFA] w-16 h-5 flex items-center">
                 Movie Z

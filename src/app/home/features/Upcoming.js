@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { NextArrow } from "../../icons/NextArrow";
-import { Star } from "../../icons/Star";
+import { Star, ArrowRight } from "lucide-react";
 import { UpcomingLoading } from "../components/UpcomingLoading";
 import { useRouter } from "next/navigation";
 
@@ -59,7 +58,7 @@ export const Upcoming = () => {
               <p className="font-inter font-medium text-[14px] text-[#09090B] dark:text-zinc-100 leading-5">
                 See more
               </p>
-              <NextArrow />
+              <ArrowRight />
             </div>
           </div>
 

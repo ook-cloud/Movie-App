@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { NextArrow } from "../../icons/NextArrow";
-import { Star } from "../../icons/Star";
+import { Star, ArrowRight } from "lucide-react";
 import { TopRatedLoading } from "../components/TopRatedLoading";
 import { useRouter } from "next/navigation";
 
@@ -56,7 +55,7 @@ export const TopRated = () => {
               <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
                 See more
               </p>
-              <NextArrow />
+              <ArrowRight />
             </div>
           </div>
 

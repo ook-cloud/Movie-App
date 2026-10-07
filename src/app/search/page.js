@@ -1,15 +1,10 @@
 "use client";
 
+import { Star, ArrowRight, ArrowLeft, X, } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Footer } from "../features/Footer";
 import { Header } from "../features/Header";
-import { Star } from "../icons/Star";
-
 import { useParams, useRouter } from "next/navigation";
-import { Previous } from "../icons/Previous";
-import { Next } from "../icons/Next";
-import { Dots } from "../icons/dots";
-import { XIcon } from "../icons/XIcon";
 import { SearchLoading } from "../home/components/SearchLoading";
 
 const api_token =
@@ -156,7 +151,7 @@ export default function SearchDetails() {
                           : "cursor-pointer hover:bg-zinc-100"
                       }`}
                     >
-                      <Previous />
+                      <ArrowLeft />
                       <span className="font-inter font-medium text-[#09090B]">
                         Previous
                       </span>
@@ -176,7 +171,7 @@ export default function SearchDetails() {
                       )}
                       {page + 2 < totalPages && (
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                          <Dots />
+                          <... />
                         </div>
                       )}
                       {page < totalPages && (
@@ -201,7 +196,7 @@ export default function SearchDetails() {
                       <span className="font-inter font-medium text-[#09090B]">
                         Next
                       </span>
-                      <Next />
+                      <ArrowRight />
                     </button>
                   </div>
                 </div>
@@ -237,7 +232,7 @@ export default function SearchDetails() {
                         <p className="font-inter font-semibold leading-4">
                           {obj.name}
                         </p>
-                        {isSelected ? <XIcon /> : <Next />}
+                        {isSelected ? <X /> : <ArrowRight  />}
                       </div>
                     );
                   })}

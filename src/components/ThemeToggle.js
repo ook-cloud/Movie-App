@@ -1,9 +1,7 @@
 "use client";
-
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
-import { Moon } from "@/app/icons/Moon";
-import { Sun } from "@/app/icons/Sun";
 
 const emptySubscribe = () => () => {};
 const useIsMounted = () =>
