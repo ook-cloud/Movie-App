@@ -7,7 +7,7 @@ import {
   ChevronRight,
   Star,
   ArrowRight,
-  Down,
+  ChevronDown, // <-- "Down"-ыг "ChevronDown" болгож засав
 } from "lucide-react";
 
 import { useRouter } from "next/navigation";
@@ -137,7 +137,8 @@ export const Header = () => {
               onClick={() => setGenre((prev) => !prev)}
               className="h-9 flex items-center gap-1.5 sm:gap-2 px-3 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-xs hover:bg-zinc-50 dark:hover:bg-zinc-800 cursor-pointer text-xs sm:text-sm font-medium text-[#18181B] dark:text-zinc-100 shrink-0 whitespace-nowrap transition-colors"
             >
-              <Down />
+              <ChevronDown className="w-4 h-4" />{" "}
+              {/* <-- Down-ийн оронд ChevronDown ашиглав */}
               Genre
             </button>
 

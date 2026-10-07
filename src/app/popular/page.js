@@ -1,12 +1,11 @@
 "use client";
 
-import { Star, ArrowRight } from "lucide-react";
+import { Star, ArrowRight, ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
 import { PopularLoading } from "../home/components/PopularLoading";
 import { Header } from "../features/Header";
 import { Footer } from "../features/Footer";
 import { useRouter } from "next/navigation";
-import { Previous } from "../icons/Previous";
 
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
@@ -119,7 +118,7 @@ export default function PopularPage() {
                     : "cursor-pointer hover:bg-zinc-100"
                 }`}
               >
-                <Previous />
+                <ArrowLeft />
                 <span className="font-inter font-medium text-[#09090B]">
                   Previous
                 </span>
