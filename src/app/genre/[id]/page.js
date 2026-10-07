@@ -11,9 +11,10 @@ import {
 } from "next/navigation";
 
 import { GenreLoading } from "../../home/components/GenreLoading";
-import { UseWatchlist } from "@/app/store/useWatchlist";
+import { useWatchlist } from "@/app/store/useWatchlist";
 
-const api_token = process.env.NEXT_PUBLIC_TMDB_TOKEN;
+const api_token =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export default function GenresMainPage() {
   const router = useRouter();
@@ -21,12 +22,20 @@ export default function GenresMainPage() {
   const pathname = usePathname();
   const param = useParams();
 
-  const { items = [], toggle } = UseWatchlist();
+  const { items = [], toggle } = useWatchlist();
 
   const urlGenres = searchParams.get("genres");
+
+  // NaN болон 0 гэсэн утгуудыг устгаж цэвэрлэх
   const initialGenres = urlGenres
-    ? urlGenres.split(",").map(Number)
-    : [Number(param.id)];
+    ? urlGenres
+        .split(",")
+        .map(Number)
+        .filter((n) => !isNaN(n) && n !== 0)
+    : param?.id && !isNaN(Number(param.id))
+      ? [Number(param.id)]
+      : [];
+
   const initialPage = Number(searchParams.get("page")) || 1;
 
   const [genres, setGenres] = useState([]);
@@ -39,7 +48,6 @@ export default function GenresMainPage() {
 
   const [loading, setLoading] = useState(true);
 
-  // Зүрхэн дээр дарахад Watchlist руу нэмэх/хасах
   const onHeartClick = (event, movie) => {
     event.preventDefault();
     event.stopPropagation();
@@ -66,17 +74,24 @@ export default function GenresMainPage() {
   }, []);
 
   useEffect(() => {
-    const genreIds = selectedGenres.join(",");
+    // Зөвхөн хүчинтэй тоон утгуудыг шүүж авах
+    const validGenres = selectedGenres.filter((n) => !isNaN(n) && n !== 0);
+
+    // Босоо зураас (|) тэмдэгт нь URL-д алдаа заадаг тул encodeURIComponent ашиглан кодлох (%7C болгох)
+    const genreIds = encodeURIComponent(validGenres.join("|"));
 
     const url =
-      selectedGenres.length > 0
+      validGenres.length > 0
         ? `https://api.themoviedb.org/3/discover/movie?language=en-US&with_genres=${genreIds}&page=${page}`
         : `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`;
 
     fetch(url, {
       headers: { Authorization: `Bearer ${api_token}` },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("API-аас дата татахад алдаа гарлаа");
+        return res.json();
+      })
       .then((data) => {
         if (data.results) {
           setMovies(data.results);
@@ -84,7 +99,11 @@ export default function GenresMainPage() {
           setTotalPages(data.total_pages > 500 ? 500 : data.total_pages);
         }
       })
-      .catch((err) => console.error("Кино татахад алдаа гарлаа:", err))
+      .catch((err) => {
+        console.error("Кино татахад алдаа гарлаа:", err);
+        setMovies([]); // Алдаа гарсан үед хоосон харуулах
+        setTotalResults(0);
+      })
       .finally(() => {
         setLoading(false);
       });
@@ -92,9 +111,10 @@ export default function GenresMainPage() {
 
   const updateURL = (newGenres, newPage) => {
     const params = new URLSearchParams(searchParams.toString());
+    const validGenres = newGenres.filter((n) => !isNaN(n) && n !== 0);
 
-    if (newGenres.length > 0) {
-      params.set("genres", newGenres.join(","));
+    if (validGenres.length > 0) {
+      params.set("genres", validGenres.join(","));
     } else {
       params.delete("genres");
     }
@@ -238,8 +258,6 @@ export default function GenresMainPage() {
                             : "https://via.placeholder.com/500x750?text=No+Image"
                         }
                       />
-
-                      {/* Зүрхэн товчлуур */}
                       <button
                         onClick={(e) => onHeartClick(e, movie)}
                         className="absolute top-2 right-2 z-10 w-[28px] h-[28px] rounded-full flex items-center justify-center transition hover:scale-110 border border-white/20 shadow-md"

@@ -1,5 +1,5 @@
 "use client";
-
+import { Sun, Moon } from "lucide-react";
 import { Down } from "../icons/Down";
 import { FlimBlue } from "../icons/FlimBlue";
 import { Search } from "../icons/Search";
@@ -8,12 +8,15 @@ import { useState, useEffect, useRef } from "react";
 import { Next } from "../icons/Next";
 import { Star } from "../icons/Star";
 import { NextArrow } from "../icons/NextArrow";
-import { ThemeToggle } from "@/components/ThemeToggle";
-
+import { Button } from "@base-ui/react";
+// import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTheme } from "next-themes";
 const api_token =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export const Header = () => {
+  const { theme, setTheme } = useTheme();
+
   const [data, setData] = useState([]);
   const [event, setEvent] = useState("");
   const router = useRouter();
@@ -26,6 +29,9 @@ export const Header = () => {
   const searchRef = useRef(null);
   const mobileSearchRef = useRef(null);
 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
   const getData = async () => {
     const response = await fetch(
       "https://api.themoviedb.org/3/genre/movie/list?language=en",
@@ -253,7 +259,11 @@ export const Header = () => {
         </div>
 
         {/* Theme Toggle Button */}
-        <ThemeToggle />
+        {/* <ThemeToggle onClick={() => setTheme("dark")} /> */}
+        <Button variant="outline" size="icon" onClick={toggleTheme}>
+          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+          <Moon className="h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+        </Button>
       </div>
 
       {/* Mobile Search Dropdown */}

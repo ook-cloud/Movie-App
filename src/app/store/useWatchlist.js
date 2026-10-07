@@ -6,30 +6,74 @@ export const useWatchlist = create(
     (set, get) => ({
       items: [],
 
-      isSaved: (id) => {
-        return get().items.some((movie) => movie.id === id);
-      },
-      add: (movie) =>
-        set((state) => ({
-          items: [{ ...movie, addedAt: Date.now() }, ...state.items],
-        })),
-      remove: (id) =>
-        set((state) => ({
-          items: state.items.filter((movie) => movie.id !== id),
-        })),
-
       toggle: (movie) => {
-        const { isSaved, add, remove } = get();
-        if (isSaved(movie.id)) {
-          remove(movie.id);
+        const currentItems = get().items;
+        const exists = currentItems.some((m) => m.id === movie.id);
+        if (exists) {
+          set({ items: currentItems.filter((m) => m.id !== movie.id) });
         } else {
-          add(movie);
+          set({ items: [{ ...movie, addedAt: Date.now() }, ...currentItems] });
         }
       },
+
       clear: () => set({ items: [] }),
+
+      lists: [],
+
+      createList: (name) =>
+        set((state) => ({
+          lists: [
+            ...state.lists,
+            {
+              id: crypto.randomUUID(),
+              name: name,
+              createdAt: Date.now(),
+              movies: [],
+            },
+          ],
+        })),
+
+      renameList: (id, newName) =>
+        set((state) => ({
+          lists: state.lists.map((list) =>
+            list.id === id ? { ...list, name: newName } : list,
+          ),
+        })),
+
+      deleteList: (id) =>
+        set((state) => ({
+          lists: state.lists.filter((list) => list.id !== id),
+        })),
+
+      toggleMovieInList: (listId, movie) =>
+        set((state) => ({
+          lists: state.lists.map((list) => {
+            if (list.id !== listId) return list;
+
+            const isSaved = list.movies.some((m) => m.id === movie.id);
+            if (isSaved) {
+              return {
+                ...list,
+                movies: list.movies.filter((m) => m.id !== movie.id),
+              };
+            } else {
+              return {
+                ...list,
+                movies: [
+                  ...list.movies,
+                  {
+                    id: movie.id,
+                    title: movie.title,
+                    poster_path: movie.poster_path,
+                  },
+                ],
+              };
+            }
+          }),
+        })),
     }),
     {
-      name: "moviez:watchlist",
+      name: "moviez:store",
     },
   ),
 );
