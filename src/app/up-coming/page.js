@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Star, ArrowRight, ArrowLeft, } from "lucide-react";
+import { Star, ArrowRight, ArrowLeft, Ellipsis } from "lucide-react";
 import { UpcomingLoading } from "../home/components/UpcomingLoading";
 import { Header } from "@/app/features/Header";
 import { Footer } from "@/app/features/Footer";
@@ -140,7 +140,7 @@ export default function UpcomingPage() {
 
                 {page + 2 < totalPages && (
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                    <... />
+                    <Ellipsis />
                   </div>
                 )}
 

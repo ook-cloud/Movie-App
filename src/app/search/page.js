@@ -1,6 +1,6 @@
 "use client";
 
-import { Star, ArrowRight, ArrowLeft, X, } from "lucide-react";
+import { Star, ArrowRight, ArrowLeft, X, Ellipsis } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Footer } from "../features/Footer";
 import { Header } from "../features/Header";
@@ -171,7 +171,7 @@ export default function SearchDetails() {
                       )}
                       {page + 2 < totalPages && (
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                          <... />
+                          <Ellipsis />
                         </div>
                       )}
                       {page < totalPages && (
@@ -232,7 +232,7 @@ export default function SearchDetails() {
                         <p className="font-inter font-semibold leading-4">
                           {obj.name}
                         </p>
-                        {isSelected ? <X /> : <ArrowRight  />}
+                        {isSelected ? <X /> : <ArrowRight />}
                       </div>
                     );
                   })}

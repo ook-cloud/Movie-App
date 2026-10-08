@@ -1,5 +1,5 @@
 "use client";
-import { Star, ArrowRight, ArrowLeft, } from "lucide-react";
+import { Star, ArrowRight, ArrowLeft, Ellipsis } from "lucide-react";
 import { useState, useEffect } from "react";
 import { TopRatedLoading } from "@/app/home/components/TopRatedLoading";
 import { Header } from "../features/Header";
@@ -141,7 +141,7 @@ export default function TopRatedPage() {
 
                 {page + 2 < totalPages && (
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                    <... />
+                    <Ellipsis />
                   </div>
                 )}
 
