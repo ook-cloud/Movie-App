@@ -3,7 +3,7 @@
 import React from "react";
 import { TopRated } from "../home/features/TopRated";
 import { Previous } from "../icons/Previous";
-import { Next } from "../icons/Next";
+import { Next } from "../Icons/Next";
 import { Dots } from "../icons/Dots";
 
 const api_token =
