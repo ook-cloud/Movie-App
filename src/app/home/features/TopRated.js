@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { NextArrow } from "../../icons/NextArrow";
-import { Star } from "../../icons/Star";
-import { TopRatedLoading } from "./TopRatedLoading";
+import { Star, ArrowRight } from "lucide-react";
+import { TopRatedLoading } from "../components/TopRatedLoading";
 import { useRouter } from "next/navigation";
 
 const api_token =
@@ -34,12 +33,12 @@ export const TopRated = () => {
   const navigateToTopRatedPage = () => {
     router.push("/top-rated");
   };
-    const JumpToDetail = (id) => {
+  const JumpToDetail = (id) => {
     router.push(`/detail/${id}`);
   };
   return (
     <div className="w-full flex flex-col px-4 md:px-8 gap-8">
-      {loading &&  <TopRatedLoading /> }
+      {loading && <TopRatedLoading />}
       {!loading && errorMessage && <div>{errorMessage}</div>}
       {!loading && !errorMessage && (
         <div className="w-full flex flex-col gap-8">
@@ -56,7 +55,7 @@ export const TopRated = () => {
               <p className="font-inter font-medium text-[14px] text-[#09090B] leading-5">
                 See more
               </p>
-              <NextArrow />
+              <ArrowRight />
             </div>
           </div>
 
@@ -65,7 +64,7 @@ export const TopRated = () => {
               <div
                 key={object.id}
                 className="w-full h-110 flex flex-col rounded-lg gap-1 bg-[#F4F4F5] overflow-hidden"
-              onClick={() => JumpToDetail(object.id)}
+                onClick={() => JumpToDetail(object.id)}
               >
                 <div className="relative w-full h-85px">
                   <img

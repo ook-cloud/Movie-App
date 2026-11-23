@@ -1,27 +1,20 @@
 "use client";
-// zaswar
 
-
+import { Star, ArrowRight, ArrowLeft, X, Ellipsis } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Footer } from "@/app/features/Footer";
-import { Header } from "@/app/features/Header";
-import { StarIcon2 } from "@/app/icons/StarIcon2";
-
+import { Footer } from "../features/Footer";
+import { Header } from "../features/Header";
 import { useParams, useRouter } from "next/navigation";
-import { ChevronLeft } from "@/app/icons/ChevronLeft";
-import { ChevronRight } from "@/app/icons/ChevronRight";
-import { ThreeDots } from "@/app/icons/ThreeDots";
-import { XIcon } from "@/app/icons/XIcon";
-import { SearchDetailsSkeleton } from "./SearchDetailsSkeleton";
+import { SearchLoading } from "../home/components/SearchLoading";
 
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export default function SearchDetails() {
   const [data, setData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errorMessege, SetErrorMessege] = useState("");
+  const [errorMessage, SetErrorMessage] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
@@ -31,21 +24,13 @@ export default function SearchDetails() {
   const param = useParams();
   const searchQuery = param?.id ? decodeURIComponent(param.id) : "";
 
-  const getData = async () => {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?language=en`,
-      { headers: { Authorization: `Bearer ${api_token}` } },
-    );
-    const jsonData = await response.json();
-    return jsonData.genres || [];
-  };
-
   const getTempData = async () => {
     if (!searchQuery) return { results: [], total_pages: 1, total_results: 0 };
     const response = await fetch(
       `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(searchQuery)}&language=en-US&page=${page}`,
       { headers: { Authorization: `Bearer ${api_token}` } },
     );
+
     const jsonData = await response.json();
     return jsonData;
   };
@@ -53,18 +38,18 @@ export default function SearchDetails() {
   useEffect(() => {
     getData()
       .then((data) => setData(data))
-      .catch(() => SetErrorMessege("Movie api error"));
+      .catch(() => SetErrorMessage("Movie api error"));
   }, []);
 
   useEffect(() => {
-    setLoading(true);
     getTempData()
       .then((jsonData) => {
         setTempData(jsonData.results || []);
         setTotalPages(Math.min(jsonData.total_pages || 1, 500));
         setTotalResults(jsonData.total_results || 0);
       })
-      .catch(() => SetErrorMessege("Movie api error"))
+
+      .catch(() => SetErrorMessage("Movie api error"))
       .finally(() => {
         setLoading(false);
       });
@@ -102,11 +87,11 @@ export default function SearchDetails() {
     <div className="w-full flex flex-col items-center overflow-x-hidden min-h-screen">
       <Header />
       <div className="w-full max-w-7xl flex flex-col px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8 mt-6 sm:mt-10 mb-16 flex-1">
-        {loading && <SearchDetailsSkeleton />}
-        {!loading && errorMessege && (
-          <div className="p-8 text-center text-red-500">{errorMessege}</div>
+        {loading && <SearchLoading />}
+        {!loading && errorMessage && (
+          <div className="p-8 text-center text-red-500">{errorMessage}</div>
         )}
-        {!loading && !errorMessege && (
+        {!loading && !errorMessage && (
           <div className="w-full flex flex-col gap-6 sm:gap-8">
             <h1 className="w-full font-inter font-semibold text-2xl sm:text-3xl text-[#09090B]">
               Search results
@@ -139,7 +124,7 @@ export default function SearchDetails() {
                       </div>
                       <div className="w-full p-2.5 sm:p-3 flex flex-col gap-1 justify-between flex-1">
                         <div className="flex items-center gap-1">
-                          <StarIcon2 />
+                          <Star />
                           <p className="font-inter font-medium text-xs sm:text-sm text-[#09090B]">
                             {object.vote_average
                               ? object.vote_average.toFixed(1)
@@ -166,7 +151,7 @@ export default function SearchDetails() {
                           : "cursor-pointer hover:bg-zinc-100"
                       }`}
                     >
-                      <ChevronLeft />
+                      <ArrowLeft />
                       <span className="font-inter font-medium text-[#09090B]">
                         Previous
                       </span>
@@ -186,7 +171,7 @@ export default function SearchDetails() {
                       )}
                       {page + 2 < totalPages && (
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                          <ThreeDots />
+                          <Ellipsis />
                         </div>
                       )}
                       {page < totalPages && (
@@ -211,7 +196,7 @@ export default function SearchDetails() {
                       <span className="font-inter font-medium text-[#09090B]">
                         Next
                       </span>
-                      <ChevronRight />
+                      <ArrowRight />
                     </button>
                   </div>
                 </div>
@@ -247,7 +232,7 @@ export default function SearchDetails() {
                         <p className="font-inter font-semibold leading-4">
                           {obj.name}
                         </p>
-                        {isSelected ? <XIcon /> : <ChevronRight />}
+                        {isSelected ? <X /> : <ArrowRight />}
                       </div>
                     );
                   })}

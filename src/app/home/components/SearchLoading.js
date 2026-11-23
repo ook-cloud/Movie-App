@@ -1,4 +1,4 @@
-export const SearchDetailsSkeleton = () => {
+export const SearchLoading = () => {
   return (
     <div className="w-full max-w-7xl flex flex-col px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8 mt-6 sm:mt-10 mb-16 animate-pulse">
       <div className="w-full flex">

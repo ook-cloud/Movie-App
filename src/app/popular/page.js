@@ -1,24 +1,19 @@
 "use client";
-// zaswar
 
-
+import { Star, ArrowRight, ArrowLeft, Ellipsis } from "lucide-react";
 import { useState, useEffect } from "react";
-import { StarIcon2 } from "../icons/StarIcon2";
-import { PopularLoading } from "../features/PopularLoading";
+import { PopularLoading } from "../home/components/PopularLoading";
 import { Header } from "../features/Header";
 import { Footer } from "../features/Footer";
 import { useRouter } from "next/navigation";
-import { ChevronLeft } from "../icons/ChevronLeft";
-import { ChevronRight } from "../icons/ChevronRight";
-import { ThreeDots } from "../icons/ThreeDots";
 
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export default function PopularPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [errorMessege, SetErrorMessege] = useState("");
+  const [errorMessage, SetErrorMessage] = useState("");
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -38,7 +33,7 @@ export default function PopularPage() {
         setData(jsonData.results || []);
         setTotalPages(Math.min(jsonData.total_pages || 1, 500));
       })
-      .catch(() => SetErrorMessege("Movie api error"))
+      .catch(() => SetErrorMessage("Movie api error"))
       .finally(() => {
         setLoading(false);
       });
@@ -48,11 +43,11 @@ export default function PopularPage() {
     router.push(`/detail/${id}`);
   };
 
-  const handleNext = () => {
+  const handleNextButton = () => {
     if (page < totalPages) setPage((prev) => prev + 1);
   };
 
-  const handlePrev = () => {
+  const handlePrevButton = () => {
     if (page > 1) setPage((prev) => prev - 1);
   };
 
@@ -62,10 +57,10 @@ export default function PopularPage() {
       <main className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto flex flex-col flex-1">
         <div className="w-full flex flex-col gap-6 sm:gap-8 mt-6 sm:mt-10 mb-16">
           {loading && <PopularLoading />}
-          {!loading && errorMessege && (
-            <div className="p-8 text-center text-red-500">{errorMessege}</div>
+          {!loading && errorMessage && (
+            <div className="p-8 text-center text-red-500">{errorMessage}</div>
           )}
-          {!loading && !errorMessege && (
+          {!loading && !errorMessage && (
             <div className="w-full flex flex-col gap-6 sm:gap-8">
               <div className="w-full flex justify-between items-center">
                 <h1 className="font-inter font-semibold text-xl sm:text-2xl text-[#09090B] leading-8">
@@ -94,7 +89,7 @@ export default function PopularPage() {
                     </div>
                     <div className="flex flex-col p-2.5 sm:p-3 gap-1 flex-1 justify-between">
                       <div className="flex items-center gap-1">
-                        <StarIcon2 />
+                        <Star />
                         <p className="font-inter font-medium text-xs sm:text-sm text-[#09090B]">
                           {object.vote_average
                             ? object.vote_average.toFixed(1)
@@ -115,7 +110,7 @@ export default function PopularPage() {
           <div className="w-full flex justify-end mt-4">
             <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
               <button
-                onClick={handlePrev}
+                onClick={handlePrevButton}
                 disabled={page === 1}
                 className={`h-9 sm:h-10 flex items-center justify-center gap-1 border border-[#E4E4E7] rounded-md py-1 px-2.5 sm:px-3 text-xs sm:text-sm ${
                   page === 1
@@ -123,7 +118,7 @@ export default function PopularPage() {
                     : "cursor-pointer hover:bg-zinc-100"
                 }`}
               >
-                <ChevronLeft />
+                <ArrowLeft />
                 <span className="font-inter font-medium text-[#09090B]">
                   Previous
                 </span>
@@ -145,22 +140,22 @@ export default function PopularPage() {
 
                 {page + 2 < totalPages && (
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex justify-center items-center">
-                    <ThreeDots />
+                    <Ellipsis />
                   </div>
                 )}
 
-                {page < totalPages && (
+                {page + 4 < totalPages && (
                   <button
-                    onClick={() => setPage(totalPages)}
+                    onClick={() => setPage(page + 4)}
                     className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex items-center justify-center hover:bg-zinc-100 text-xs sm:text-sm cursor-pointer"
                   >
-                    {totalPages}
+                    {page + 4}
                   </button>
                 )}
               </div>
 
               <button
-                onClick={handleNext}
+                onClick={handleNextButton}
                 disabled={page === totalPages}
                 className={`h-9 sm:h-10 flex items-center justify-center gap-1 border border-[#E4E4E7] rounded-md py-1 px-2.5 sm:px-3 text-xs sm:text-sm ${
                   page === totalPages
@@ -171,7 +166,7 @@ export default function PopularPage() {
                 <span className="font-inter font-medium text-[#09090B]">
                   Next
                 </span>
-                <ChevronRight />
+                <ArrowRight />
               </button>
             </div>
           </div>

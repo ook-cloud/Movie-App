@@ -1,14 +1,14 @@
 "use client";
-import { Footer } from "@/app/features/Footer";
-import { Header } from "@/app/features/Header";
-import { Play } from "@/app/icons/Play";
-import { Star } from "@/app/icons/Star";
-import { Star2 } from "@/app/icons/Star2";
+
+import { Footer } from "../../features/Footer";
+import { Header } from "../../features/Header";
+import { Play, Star, ArrowRight } from "lucide-react";
+
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { NextArrow } from "@/app/icons/NextArrow";
+
 const api_token =
-  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiY2RlYjljY2JlMzU2YjJjOTMxZjRjZWI1OTA4YmQ4NSIsIm5iZiI6MTc4NjU4NTAxNC41MDcsInN1YiI6IjZhN2QxZmI2OGFhNWQzN2ZiNTQ0NTkzMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wd9oLUNGObBB7hSw6-cdoMQ2J35kHO-koQ8BCdqOOwQ";
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYjE0NDJiOGUwMTcxN2VlNDliZTU0Njc1ZDIwMmExMiIsIm5iZiI6MTc4NjU4NTA3NS45NDIwMDAyLCJzdWIiOiI2YTdkMWZmMzg4ZjQ0ZGJjMzI0NDU5ODgiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.FngqDaJnZYi7hYgRF6MBlM_mBw52dkzc72A78xQPoYI";
 
 export default function Detail() {
   const router = useRouter();
@@ -297,7 +297,7 @@ export default function Detail() {
               >
                 See more
               </button>
-              <NextArrow />
+              <ArrowRight />
             </div>
           </div>
 
@@ -321,7 +321,7 @@ export default function Detail() {
                 </div>
                 <div className="flex flex-col p-3 gap-1">
                   <div className="flex items-center gap-1">
-                    <Star2 />
+                    <Star />
                     <p className="font-inter font-medium text-[13px] text-[#09090B]">
                       {movie.vote_average
                         ? movie.vote_average.toFixed(1)
